@@ -349,5 +349,332 @@ public class MainJFrame extends javax.swing.JFrame {
         ViewServicedtlsPanel viewService = new ViewServicedtlsPanel(systAdmin, this::manageBook, uName, Book);
         jSplitPane.setRightComponent(viewService);
     }
+    
+    private void renderHClubManager(String uName) {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<HClub> HClubs = network.get(i).getentDir().getListOfHClub();
+            for (int j = 0; j < HClubs.size(); j++) {
+                List<Manager> manager = HClubs.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        HClubManagerPanel healthManagerPanel = new HClubManagerPanel(systAdmin, this::ViewTask, this::createOrg,
+                                this::OrgAdminPanel);
+                        jSplitPane.setRightComponent(healthManagerPanel);
+
+                    }
+                }
+            }
+        }
+    }
+
+    private Network finduserNetworkForHClub() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<HClub> HClubs = network.get(i).getentDir().getListOfHClub();
+            for (int j = 0; j < HClubs.size(); j++) {
+                List<Manager> manager = HClubs.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        return network.get(i);
+
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private Enterprise finduserHClub() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<HClub> health = network.get(i).getentDir().getListOfHClub();
+            for (int j = 0; j < health.size(); j++) {
+                List<Manager> manager = health.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        return health.get(j);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private void ViewTask() {   //view task for health club
+        String type = systAdmin.finduserType(uName);
+        HClub HClub = (HClub) finduserHClub();
+        ViewTask viewTask = new ViewTask(systAdmin, this::HClubManagerPanel, uName, type, HClub
+        );
+        jSplitPane.setRightComponent(viewTask);
+    }
+
+    private void createOrg() {
+        Network network = finduserNetworkForHClub();
+        ManageOrgPanel org = new ManageOrgPanel(systAdmin, this::HClubManagerPanel, uName, network);
+        jSplitPane.setRightComponent(org);
+    }
+
+    private void OrgAdminPanel() {   //create org admin for health club
+        String type = systAdmin.finduserType(uName);
+        Network network = finduserNetworkForHClub();
+        OrgAdminPanel orgAdmin = new OrgAdminPanel(systAdmin, this::HClubManagerPanel, uName, type, network);
+        jSplitPane.setRightComponent(orgAdmin);
+    }
+
+    private void HClubManagerPanel() {   //go back to HClub
+        jSplitPane.setRightComponent(new HClubManagerPanel(systAdmin, this::ViewTask, this::createOrg, this::OrgAdminPanel));
+    }
+
+    private void renderrestManager(String uName) {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<rest> rests = network.get(i).getentDir().getListOfrests();
+            for (int j = 0; j < rests.size(); j++) {
+                List<Manager> manager = rests.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        restManagerPanel restAssign = new restManagerPanel(systAdmin, this::renderViewTask1, this::renderrestOrg, this::renderrestAdmin, this::AddOrder);
+                        jSplitPane.setRightComponent(restAssign);
+                    }
+                }
+            }
+        }
+    }
+
+    private Network finduserNetworkForrest() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<rest> rest = network.get(i).getentDir().getListOfrests();
+            for (int j = 0; j < rest.size(); j++) {
+                List<Manager> manager = rest.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        return network.get(i);
+
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private Enterprise finduserrest() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<rest> rest = network.get(i).getentDir().getListOfrests();
+            for (int j = 0; j < rest.size(); j++) {
+                List<Manager> manager = rest.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        return rest.get(j);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private void renderViewTask1() {
+        String type = systAdmin.finduserType(uName);
+        rest rest = (rest) finduserrest();
+        TaskRest resMan = new TaskRest(systAdmin, this::restManagerPanel, uName, type, rest);
+        jSplitPane.setRightComponent(resMan);
+    }
+
+    private void renderrestOrg() {
+        String type = systAdmin.finduserType(uName);
+        Network network = finduserNetworkForrest();
+        ManageOrgForRest org = new ManageOrgForRest(systAdmin, this::restManagerPanel, uName, type, network
+        );
+        jSplitPane.setRightComponent(org);
+    }
+
+    private void renderrestAdmin() { //create organisation admin under restauarant
+        String type = systAdmin.finduserType(uName);
+        Network network = finduserNetworkForrest();
+        ManageOrgAdmForRest orgAdmin = new ManageOrgAdmForRest(systAdmin, this::restManagerPanel, uName, type, network);
+        jSplitPane.setRightComponent(orgAdmin);
+    }
+
+    private void AddOrder() {
+        String type = systAdmin.finduserType(uName);
+        Network network = finduserNetworkForrest();
+        AddOrder order = new AddOrder(systAdmin, this::restManagerPanel, uName, type, network);
+        jSplitPane.setRightComponent(order);
+    }
+
+    private void restManagerPanel() {
+        jSplitPane.setRightComponent(new restManagerPanel(systAdmin, this::renderViewTask1, this::renderrestOrg,
+                this::renderrestAdmin, this::AddOrder));
+    }
+
+    private void renderHotelManager(String uName) {   //hotel panel
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<Hotel> hotel = network.get(i).getentDir().getListOfHotel();
+            for (int j = 0; j < hotel.size(); j++) {
+                List<Manager> manager = hotel.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        HManagerPanel hotelPanel = new HManagerPanel(systAdmin, this::renderViewTask2, this::renderHotelOrg,
+                                this::renderHotelAdmin, this::renderRoomPanel);
+                        jSplitPane.setRightComponent(hotelPanel);
+
+                    }
+                }
+            }
+        }
+    }
+
+    private Network finduserNetworkForHotel() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<Hotel> hotel = network.get(i).getentDir().getListOfHotel();
+            for (int j = 0; j < hotel.size(); j++) {
+                List<Manager> manager = hotel.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        System.out.println("manager found is " + manager.get(k).getuName() + " and city is " + network.get(i));
+                        return network.get(i);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private Enterprise findManagerHotel() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<Hotel> hotel = network.get(i).getentDir().getListOfHotel();
+            for (int j = 0; j < hotel.size(); j++) {
+                List<Manager> manager = hotel.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        return hotel.get(j);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private void renderViewTask2() {
+        String type = systAdmin.finduserType(uName);
+        Hotel hotel = (Hotel) findManagerHotel();
+        ViewTaskHotel hotelPanel = new ViewTaskHotel(systAdmin, this::HManagerPanel, uName, type, hotel);
+        jSplitPane.setRightComponent(hotelPanel);
+    }
+
+    private void renderHotelOrg() {
+        String type = systAdmin.finduserType(uName);
+        Network network1 = finduserNetworkForHotel();
+        HOrg org = new HOrg(systAdmin, this::HManagerPanel, uName, type, network1);
+        jSplitPane.setRightComponent(org);
+    }
+
+    private void renderHotelAdmin() {
+        String type = systAdmin.finduserType(uName);
+        Network network1 = finduserNetworkForHotel();
+
+        HOrgAdmin orgAdmin = new HOrgAdmin(systAdmin, this::HManagerPanel, uName, type, network1);
+        jSplitPane.setRightComponent(orgAdmin);
+    }
+
+    private void renderRoomPanel() {
+        Network network = finduserNetworkForHotel();
+        RPan room = new RPan(systAdmin, this::HManagerPanel, network, uName);
+        jSplitPane.setRightComponent(room);
+    }
+
+    private void HManagerPanel() {
+        jSplitPane.setRightComponent(new HManagerPanel(systAdmin, this::renderViewTask2, this::renderHotelOrg, this::renderHotelAdmin, this::renderRoomPanel));
+    }
+
+    private void renderEventManager(String uName) {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<BussEvent> event = network.get(i).getentDir().getListOfEvents();
+            for (int j = 0; j < event.size(); j++) {
+                List<Manager> manager = event.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        EvtManagerPanel eventPanel = new EvtManagerPanel(systAdmin, this::renderViewTask3, this::renderEventOrg,
+                                this::renderEventAdmin);
+                        jSplitPane.setRightComponent(eventPanel);
+
+                    }
+                }
+            }
+        }
+    }
+
+    private Network finduserNetworkForEvents() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<BussEvent> event = network.get(i).getentDir().getListOfEvents();
+            for (int j = 0; j < event.size(); j++) {
+                List<Manager> manager = event.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        return network.get(i);
+
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private Enterprise finduserEnterprise() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        for (int i = 0; i < network.size(); i++) {
+            List<BussEvent> event = network.get(i).getentDir().getListOfEvents();
+            for (int j = 0; j < event.size(); j++) {
+                List<Manager> manager = event.get(j).getListOfManager();
+                for (int k = 0; k < manager.size(); k++) {
+                    if (manager.get(k).getuName().equals(uName)) {
+                        return event.get(j);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private void confirmWorkRequestForEvent() {
+        List<Network> network = systAdmin.getListOfNetwork();
+        String type = systAdmin.finduserType(uName);
+        for (int i = 0; i < network.size(); i++) {
+            ConfirmEventWorkReq workRequest = new ConfirmEventWorkReq(systAdmin, uName, type);
+            jSplitPane.setRightComponent(workRequest);
+        }
+    }
+
+    private void renderViewTask3() {     // view Business Event manager panel
+        String type = systAdmin.finduserType(uName);
+        BussEvent event = (BussEvent) finduserEnterprise();
+        ViewTaskForEvt eventPanel = new ViewTaskForEvt(systAdmin, this::EvtManagerPanel, uName, type, event);
+        jSplitPane.setRightComponent(eventPanel);
+    }
+
+    private void renderEventOrg() {     // add an organisation for event
+        String type = systAdmin.finduserType(uName);
+        Network network = finduserNetworkForEvents();
+        ManageOrgForEvt org = new ManageOrgForEvt(systAdmin, this::EvtManagerPanel, uName, type, network);
+        jSplitPane.setRightComponent(org);
+    }
+
+    private void renderEventAdmin() { //create organisation admin under event
+        String type = systAdmin.finduserType(uName);
+        Network network = finduserNetworkForEvents();
+        ManageOrgAdminForEvt orgAdmin = new ManageOrgAdminForEvt(systAdmin, this::EvtManagerPanel, uName, type, network);
+        jSplitPane.setRightComponent(orgAdmin);
+    }
+
+    private void EvtManagerPanel() {    //go back to event manager panel
+        jSplitPane.setRightComponent(new EvtManagerPanel(systAdmin, this::renderViewTask3, this::renderEventOrg, this::renderEventAdmin));
+    }
 
 }
