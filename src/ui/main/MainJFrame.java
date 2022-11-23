@@ -298,4 +298,56 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField pwdField;
     private javax.swing.JTextField uNameField;
     // End of variables declaration//GEN-END:variables
+
+    private void renderCust(String uName) {
+        Cust Cust = systAdmin.getCustDirec().findCustuName(uName);
+        CustStartingPanel CustPanel = new CustStartingPanel(systAdmin, this::renderBookRoomPanel, this::manageBook);
+        jSplitPane.setRightComponent(CustPanel);
+    }
+
+    private void renderBookRoomPanel() {
+        BookRoomServPanel bookroomPanel = new BookRoomServPanel(systAdmin, this::manageCustPanel, uName);
+        jSplitPane.setRightComponent(bookroomPanel);
+    }
+
+    private void manageBook() {
+        ManageBook manageBookPanel = new ManageBook(systAdmin, this::manageCustPanel, this::addServices, this::viewService, uName);
+        jSplitPane.setRightComponent(manageBookPanel);
+    }
+
+    private void manageCustPanel() {
+        jSplitPane.setRightComponent(new CustStartingPanel(systAdmin, this::renderBookRoomPanel, this::manageBook));
+    }
+
+    private void addServices(Book Book) {
+        AddServPanel service = new AddServPanel(systAdmin, this::bookEvent, this::placeOrder, this::healthPanel,
+                this::ServiceHotel, this::manageBook, uName, Book);
+        jSplitPane.setRightComponent(service);
+    }
+
+    private void bookEvent(Book Book) {
+        BookEventsPanel event = new BookEventsPanel(systAdmin, this::addServices, uName, Book);
+        jSplitPane.setRightComponent(event);
+    }
+
+    private void placeOrder(Book Book) {           //Cust order from rest
+        RestServPanel order = new RestServPanel(systAdmin, this::addServices, uName, Book);
+        jSplitPane.setRightComponent(order);
+    }
+
+    private void healthPanel(Book Book) {             // HClub panel for Cust
+        HClubServicesJPanel HClub = new HClubServicesJPanel(systAdmin, this::addServices, uName, Book);
+        jSplitPane.setRightComponent(HClub);
+    }
+
+    private void ServiceHotel(Book Book) {    //laundary and transport service panel fpr Cust
+        ServiceHotelPanel hotelPanel = new ServiceHotelPanel(systAdmin, this::addServices, uName, Book);
+        jSplitPane.setRightComponent(hotelPanel);
+    }
+
+    private void viewService(Book Book) {
+        ViewServicedtlsPanel viewService = new ViewServicedtlsPanel(systAdmin, this::manageBook, uName, Book);
+        jSplitPane.setRightComponent(viewService);
+    }
+
 }
