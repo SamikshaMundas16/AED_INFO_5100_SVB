@@ -153,6 +153,52 @@ public class MainJFrame extends javax.swing.JFrame {
                     systAdmJPanel systAdm = new systAdmJPanel(systAdmin, this::renderNetworkPanel, this::renderEnterprisePanel, this::renderManagerPanel, this::renderCustPanel);
                     jSplitPane.setRightComponent(systAdm);
                     break;
+                case "Cust":
+                    renderCust(uName);
+                    break;
+
+                case "Health Club":
+                    renderHClubManager(uName);
+                    break;
+
+                case "rest":
+                    renderrestManager(uName);
+                    break;
+
+                case "Hotel":
+                    HManagerPanel();
+                    break;
+
+                case "Business Event":
+                    EvtManagerPanel();
+                    break;
+                case "Catering":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "Decor":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "Photography":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "DeliMan":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "Laundary":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "Transportation":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "Phy":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "Therapy":
+                    confirmWorkRequestForEvent();
+                    break;
+                case "Trainer":
+                    confirmWorkRequestForEvent();
+                    break;
                 default:
                     JOptionPane.showMessageDialog(this, "Type not supported.");
                     return;
@@ -179,6 +225,31 @@ public class MainJFrame extends javax.swing.JFrame {
         System.out.println("Logout success.");
         
     }//GEN-LAST:event_logoutBtnActionPerformed
+
+    
+    private void renderNetworkPanel() {
+        ManageNetPanel network1 = new ManageNetPanel(systAdmin, this::rendersystAdminPanel);
+        jSplitPane.setRightComponent(network1);
+    }
+
+    private void renderEnterprisePanel() {
+        ManageEntPanel enterprise = new ManageEntPanel(systAdmin, this::rendersystAdminPanel);
+        jSplitPane.setRightComponent(enterprise);
+    }
+
+    private void renderCustPanel() {
+        ManageCustPanel Cust = new ManageCustPanel(systAdmin, this::rendersystAdminPanel);
+        jSplitPane.setRightComponent(Cust);
+    }
+
+    private void renderManagerPanel() {
+        ManageManPanel manager = new ManageManPanel(systAdmin, this::rendersystAdminPanel);
+        jSplitPane.setRightComponent(manager);
+    }
+
+    private void rendersystAdminPanel() {
+        jSplitPane.setRightComponent(new systAdmJPanel(systAdmin, this::renderNetworkPanel, this::renderEnterprisePanel, this::renderManagerPanel, this::renderCustPanel));
+    }
 
     /**
      * @param args the command line arguments
