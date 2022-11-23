@@ -4,6 +4,10 @@
  */
 package ui.main;
 
+import database.DbUtils;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -32,10 +36,10 @@ public class MainJFrame extends javax.swing.JFrame {
         ControlPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        usernameField = new javax.swing.JTextField();
+        uNameField = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
-        passwordField = new javax.swing.JPasswordField();
+        pwdField = new javax.swing.JPasswordField();
         WorkArea = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -65,7 +69,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        passwordField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        pwdField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout ControlPanelLayout = new javax.swing.GroupLayout(ControlPanel);
         ControlPanel.setLayout(ControlPanelLayout);
@@ -77,10 +81,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(ControlPanelLayout.createSequentialGroup()
                 .addGroup(ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pwdField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ControlPanelLayout.createSequentialGroup()
                         .addGroup(ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ControlPanelLayout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addComponent(jLabel1))
@@ -98,11 +102,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(165, 165, 165)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -138,6 +142,29 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
 
+        this.uName = uNameField.getText();
+        this.pwd = pwdField.getText();
+
+        if (systAdmin.validateuNamepwd(uName, pwd)) {
+            String type = systAdmin.finduserType(uName);
+
+            switch (type) {
+                case "admin":
+                    systAdmJPanel systAdm = new systAdmJPanel(systAdmin, this::renderNetworkPanel, this::renderEnterprisePanel, this::renderManagerPanel, this::renderCustPanel);
+                    jSplitPane.setRightComponent(systAdm);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Type not supported.");
+                    return;
+            }
+            uNameField.setText("");
+            pwdField.setText("");
+            loginBtn.setEnabled(false);
+            logoutBtn.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid uName or pwd");
+        }
+                                           
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
@@ -147,9 +174,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane.setRightComponent(WorkArea);
         loginBtn.setEnabled(true);
         logoutBtn.setEnabled(false);
-        usernameField.setText("");
-        passwordField.setText("");
+        uNameField.setText("");
+        pwdField.setText("");
         System.out.println("Logout success.");
+        
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
@@ -196,7 +224,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JButton loginBtn;
     private javax.swing.JButton logoutBtn;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JTextField usernameField;
+    private javax.swing.JPasswordField pwdField;
+    private javax.swing.JTextField uNameField;
     // End of variables declaration//GEN-END:variables
 }
