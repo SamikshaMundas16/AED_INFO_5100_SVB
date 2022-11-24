@@ -3,18 +3,38 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui.systAdm;
-
+import java.awt.Color;
+import ModelNew.systAdmin;
 /**
  *
  * @author doshi
  */
 public class systAdmJPanel extends javax.swing.JPanel {
-
+    systAdmin systems;
+    private Runnable callOnCreateMethod1;
+    private Runnable callOnCreateMethod2;
+    private Runnable callOnCreateMethod3;
+    private Runnable callOnCreateMethod4;
     /**
      * Creates new form systAdmJPanel
      */
-    public systAdmJPanel() {
+    public systAdmJPanel(systAdmin systems, Runnable callOnCreateMethod1, Runnable callOnCreateMethod2, Runnable callOnCreateMethod3, Runnable callOnCreateMethod4) {
         initComponents();
+        this.systems = systems;
+        this.callOnCreateMethod1 = callOnCreateMethod1;
+        this.callOnCreateMethod2 = callOnCreateMethod2;
+        this.callOnCreateMethod3 = callOnCreateMethod3;
+        this.callOnCreateMethod4 = callOnCreateMethod4;
+        setBackground(new java.awt.Color(255, 204, 204));
+
+        btnmanagenetworks.setBackground(new java.awt.Color(244, 120, 140));
+        btnmanagenetworks.setOpaque(true);
+        btnmanageCusts.setBackground(new java.awt.Color(244, 120, 140));
+        btnmanageCusts.setOpaque(true);
+        btnmanagemanagers.setBackground(new java.awt.Color(244, 120, 140));
+        btnmanagemanagers.setOpaque(true);
+        enterpriseBtn.setBackground(new java.awt.Color(244, 120, 140));
+        enterpriseBtn.setOpaque(true);
     }
 
     /**
