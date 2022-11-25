@@ -7,6 +7,52 @@ package ui.main;
 import database.DbUtils;
 import java.util.List;
 import javax.swing.JOptionPane;
+import db.DbUtils;
+import java.util.List;
+import javax.swing.JOptionPane;
+import ModelNew.Book;
+import ModelNew.BussEvent;
+import ModelNew.Cust;
+import ModelNew.Enterprise;
+import ModelNew.HClub;
+import ModelNew.Hotel;
+import ModelNew.Manager;
+import ModelNew.Network;
+import ModelNew.rest;
+import ModelNew.systAdmin;
+import ui.CustRole.AddServPanel;
+import ui.CustRole.BookEventsPanel;
+import ui.CustRole.BookRoomServPanel;
+import ui.CustRole.CustStartingPanel;
+import ui.CustRole.HClubServicesJPanel;
+import ui.CustRole.ServiceHotelPanel;
+import ui.CustRole.ManageBook;
+import ui.CustRole.RestServPanel;
+import ui.CustRole.ViewServicedtlsPanel;
+import ui.EventManageRole.EvtManagerPanel;
+import ui.EventManageRole.ManageOrgAdminForEvt;
+import ui.EventManageRole.ManageOrgForEvt;
+import ui.EventManageRole.ViewTaskForEvt;
+import ui.HClubManageRole.ViewTask;
+import ui.HClubManageRole.HClubManagerPanel;
+import ui.RestManageRole.ManageOrgForRest;
+import ui.HClubManageRole.OrgAdminPanel;
+import ui.HClubManageRole.ManageOrgPanel;
+import ui.HManageRole.HManagerPanel;
+import ui.HManageRole.HOrgAdmin;
+import ui.HManageRole.HOrg;
+import ui.HManageRole.RPan;
+import ui.HManageRole.ViewTaskHotel;
+import ui.RestManageRole.AddOrder;
+import ui.RestManageRole.ManageOrgAdmForRest;
+import ui.RestManageRole.restManagerPanel;
+import ui.RestManageRole.TaskRest;
+import ui.systAdm.ManageCustPanel;
+import ui.systAdm.ManageEntPanel;
+import ui.systAdm.ManageManPanel;
+import ui.systAdm.ManageNetPanel;
+import ui.systAdm.systAdmJPanel;
+import ui.confirm.ConfirmEventWorkReq;
 
 
 
@@ -16,11 +62,19 @@ import javax.swing.JOptionPane;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    private systAdmin systAdmin;
+    private String uName;
+    private String pwd;
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+        this.systAdmin = DbUtils.getInstance().retrieveSystem();
+        logoutBtn.setEnabled(false);
+        ControlPanel.setBackground(new java.awt.Color(244, 120, 140));
+        WorkArea.setBackground(new java.awt.Color(255, 204, 204));
     }
 
     /**
