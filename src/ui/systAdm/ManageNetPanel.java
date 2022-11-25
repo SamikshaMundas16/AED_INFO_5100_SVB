@@ -4,17 +4,37 @@
  */
 package ui.systAdm;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModelNew;
+import ModelNew.BussEvent;
+import ModelNew.Enterprise;
+import ModelNew.entDir;
+import ModelNew.Manager;
+import ModelNew.Network;
+import ModelNew.systAdmin;
+
 /**
  *
  * @author doshi
  */
 public class ManageNetPanel extends javax.swing.JPanel {
-
+    
+    private systAdmin systAdmin;
+    private Runnable callOnCreateMethod;
+    
     /**
      * Creates new form ManageNetPanel
      */
-    public ManageNetPanel() {
+    public ManageNetPanel(systAdmin systAdmin, Runnable callOnCreateMethod) {
+        this.callOnCreateMethod = callOnCreateMethod;
+        this.systAdmin = systAdmin;
         initComponents();
+        populateTable();
+        setBackground(new java.awt.Color(255, 204, 204));
+          backButton.setBackground(new java.awt.Color(244, 120, 140));
+         backButton.setOpaque(true);
+         addButton.setBackground(new java.awt.Color(244, 120, 140));
+         addButton.setOpaque(true);
     }
 
     /**
@@ -158,4 +178,18 @@ public class ManageNetPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblsysadmin;
     private javax.swing.JTextField nameField;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTabel.getModelNew();
+        ModelNew.setRowCount(0);
+        Object row[] = new Object[10];
+        for (Network network : systAdmin.getListOfNetwork()) {        //populate network
+            row[0] = network.getName();
+            ModelNew.addRow(row);
+        }
+    }
+
+
+
+
 }
