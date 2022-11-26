@@ -4,17 +4,65 @@
  */
 package ui.systAdm;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModelNew;
+import ModelNew.BussEvent;
+import ModelNew.entDir;
+import ModelNew.HClub;
+import ModelNew.Hotel;
+import ModelNew.Manager;
+import ModelNew.Network;
+import ModelNew.rest;
+import ModelNew.systAdmin;
+import ui.main.Validator;
+
 /**
  *
  * @author doshi
  */
 public class ManageManPanel extends javax.swing.JPanel {
 
+    private systAdmin systAdmin;
+    private Runnable callOnCreateMethod;
     /**
      * Creates new form ManageManPanel
      */
-    public ManageManPanel() {
+    public ManageManPanel(systAdmin systAdmin, Runnable callOnCreateMethod) {
         initComponents();
+        this.systAdmin = systAdmin;
+        this.callOnCreateMethod = callOnCreateMethod;
+        for (Network network : systAdmin.getListOfNetwork()) {
+            networkType.addItem(network.getName());
+        }
+        populateTable();
+        setBackground(new java.awt.Color(255, 204, 204));
+
+        dltBtn.setBackground(new java.awt.Color(244, 120, 140));
+        dltBtn.setOpaque(true);
+        addButton.setBackground(new java.awt.Color(244, 120, 140));
+        addButton.setOpaque(true);
+        updateBtn.setBackground(new java.awt.Color(244, 120, 140));
+        updateBtn.setOpaque(true);
+        backButton.setBackground(new java.awt.Color(244, 120, 140));
+        backButton.setOpaque(true);
+    }
+
+    public boolean validateName() {
+        if (nameField.getText().matches("[a-zA-Z]{2,19}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : name should contain only alphabets");
+            return false;
+        }
+    }
+
+    public boolean pwdName() {
+        if (pwdField.getText().matches("[a-zA-Z]{3}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : pwd should contain only 3 inputs");
+            return false;
+        }
     }
 
     /**
@@ -266,123 +314,32 @@ public class ManageManPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        callOnCreateMethod.run();
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteBtnActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        if (jTable1.getSelectedRowCount() != 1) {
-            return;
-        }
-
-        String networkName = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-
-        String eType = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String eName = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-
-        String managerName = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
-        String manageruName = ModelNew.getValueAt(jTable1.getSelectedRow(), 4).toString();
-        String managerpwd = ModelNew.getValueAt(jTable1.getSelectedRow(), 5).toString();
-
-        nameField.setText(managerName);
-        uNameField.setText(manageruName);
-        pwdField.setText(managerpwd);
-
-        networkType.setSelectedItem(networkName);
-        enterpriseName.setSelectedItem(eName);
-        enterpriseType.setSelectedItem(eType);
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Object row[] = new Object[10];
-        String name = nameField.getText();
-        String uName = uNameField.getText();
-        String pwd = pwdField.getText();
+    private void enterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseTypeActionPerformed
+        enterpriseName.removeAllItems();
         String networkName = networkType.getSelectedItem().toString();
-        String enterpriseType1 = enterpriseType.getSelectedItem().toString();   //type of enterprises eg:HClub
-        String enterpriseName1 = enterpriseName.getSelectedItem().toString();
-
-        if (!Validator.validateName(this, name) || !Validator.validateuName(this, uName)
-            || !Validator.validatepwd(this, pwd)) {
-            return;
-        }
-
-        if (!systAdmin.userExistsInSystem(uName)) {
-            Network network = systAdmin.findNetwork(networkName);  //finiding network
-            entDir enterpriseDirec = network.getentDir();
-            if (enterpriseType1.equals("Health Club") && enterpriseDirec != null) {
-                HClub HClubName1 = enterpriseDirec.findHClub(enterpriseName1);
-                HClubName1.addManager(name, uName, pwd);
-                systAdmin.getuNamepwdMap();
-                systAdmin.adduser(uName, pwd, "Health Club");
-                row[0] = networkName;
-                row[1] = "Health Club";
-                row[2] = enterpriseName1;
-                row[3] = name;
-                row[4] = uName;
-                row[5] = pwd;
-                ModelNew.addRow(row);
-                return;
-            } else if (enterpriseType1.equals("Business Event") && enterpriseDirec != null) {
-                BussEvent event1 = enterpriseDirec.findEvent(enterpriseName1);
-                event1.addManager(name, uName, pwd);
-                systAdmin.adduser(uName, pwd, "Business Event");
-                row[0] = networkName;
-                row[1] = "BussEvent";
-                row[2] = enterpriseName1;
-                row[3] = name;
-                row[4] = uName;
-                row[5] = pwd;
-                ModelNew.addRow(row);
-            } else if (enterpriseType1.equals("rest") && enterpriseDirec != null) {
-                rest res1 = enterpriseDirec.findrest(enterpriseName1);
-                res1.addManager(uName, uName, pwd);
-                systAdmin.adduser(uName, pwd, "rest");
-
-                row[0] = networkName;
-                row[1] = "rest";
-                row[2] = enterpriseName1;
-                row[3] = name;
-                row[4] = uName;
-                row[5] = pwd;
-                ModelNew.addRow(row);
-            } else if (enterpriseType1.equals("Hotel") && enterpriseDirec != null) {
-                Hotel hotel1 = enterpriseDirec.findHotel(enterpriseName1);
-                hotel1.addManager(name, uName, pwd);
-                systAdmin.adduser(uName, pwd, "Hotel");
-                row[0] = networkName;
-                row[1] = "Hotel";
-                row[2] = enterpriseName1;
-                row[3] = name;
-                row[4] = uName;
-                row[5] = pwd;
-                ModelNew.addRow(row);
+        Network network = systAdmin.findNetwork(networkName);
+        entDir enterpriseDirec = network.getentDir();
+        String enterpriseType1 = enterpriseType.getSelectedItem().toString();
+        if (enterpriseType1.equals("Health Club")) {
+            for (HClub club : enterpriseDirec.getListOfHClub()) {
+                enterpriseName.addItem(club.getName());
+            }
+        } else if (enterpriseType1.equals("Business Event")) {
+            for (BussEvent event : enterpriseDirec.getListOfEvents()) {
+                enterpriseName.addItem(event.getName());
+            }
+        } else if (enterpriseType1.equals("rest")) {
+            for (rest res : enterpriseDirec.getListOfrests()) {
+                enterpriseName.addItem(res.getName());
+            }
+        } else if (enterpriseType1.equals("Hotel")) {
+            for (Hotel hotel : enterpriseDirec.getListOfHotel()) {
+                enterpriseName.addItem(hotel.getName());
             }
         } else {
-            JOptionPane.showMessageDialog(this, String.format("This uName '%s' already exists", uName));
+            return;
         }
-        JOptionPane.showMessageDialog(this, "Manager added successfully");
-        nameField.setText("");
-        uNameField.setText("");
-        pwdField.setText("");
-        enterpriseName.setSelectedIndex(0);
-        enterpriseType.setSelectedIndex(0);
-        networkType.setSelectedIndex(0);
-    }//GEN-LAST:event_addButtonActionPerformed
-
-    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-
-    }//GEN-LAST:event_nameFieldActionPerformed
-
-    private void networkTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkTypeActionPerformed
-
-    }//GEN-LAST:event_networkTypeActionPerformed
+    }//GEN-LAST:event_enterpriseTypeActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
 
@@ -462,32 +419,123 @@ public class ManageManPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_updateBtnActionPerformed
 
-    private void enterpriseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseTypeActionPerformed
-        enterpriseName.removeAllItems();
+    private void networkTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkTypeActionPerformed
+
+    }//GEN-LAST:event_networkTypeActionPerformed
+
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+
+    }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        Object row[] = new Object[10];
+        String name = nameField.getText();
+        String uName = uNameField.getText();
+        String pwd = pwdField.getText();
         String networkName = networkType.getSelectedItem().toString();
-        Network network = systAdmin.findNetwork(networkName);
-        entDir enterpriseDirec = network.getentDir();
-        String enterpriseType1 = enterpriseType.getSelectedItem().toString();
-        if (enterpriseType1.equals("Health Club")) {
-            for (HClub club : enterpriseDirec.getListOfHClub()) {
-                enterpriseName.addItem(club.getName());
-            }
-        } else if (enterpriseType1.equals("Business Event")) {
-            for (BussEvent event : enterpriseDirec.getListOfEvents()) {
-                enterpriseName.addItem(event.getName());
-            }
-        } else if (enterpriseType1.equals("rest")) {
-            for (rest res : enterpriseDirec.getListOfrests()) {
-                enterpriseName.addItem(res.getName());
-            }
-        } else if (enterpriseType1.equals("Hotel")) {
-            for (Hotel hotel : enterpriseDirec.getListOfHotel()) {
-                enterpriseName.addItem(hotel.getName());
-            }
-        } else {
+        String enterpriseType1 = enterpriseType.getSelectedItem().toString();   //type of enterprises eg:HClub
+        String enterpriseName1 = enterpriseName.getSelectedItem().toString();
+
+        if (!Validator.validateName(this, name) || !Validator.validateuName(this, uName)
+            || !Validator.validatepwd(this, pwd)) {
             return;
         }
-    }//GEN-LAST:event_enterpriseTypeActionPerformed
+
+        if (!systAdmin.userExistsInSystem(uName)) {
+            Network network = systAdmin.findNetwork(networkName);  //finiding network
+            entDir enterpriseDirec = network.getentDir();
+            if (enterpriseType1.equals("Health Club") && enterpriseDirec != null) {
+                HClub HClubName1 = enterpriseDirec.findHClub(enterpriseName1);
+                HClubName1.addManager(name, uName, pwd);
+                systAdmin.getuNamepwdMap();
+                systAdmin.adduser(uName, pwd, "Health Club");
+                row[0] = networkName;
+                row[1] = "Health Club";
+                row[2] = enterpriseName1;
+                row[3] = name;
+                row[4] = uName;
+                row[5] = pwd;
+                ModelNew.addRow(row);
+                return;
+            } else if (enterpriseType1.equals("Business Event") && enterpriseDirec != null) {
+                BussEvent event1 = enterpriseDirec.findEvent(enterpriseName1);
+                event1.addManager(name, uName, pwd);
+                systAdmin.adduser(uName, pwd, "Business Event");
+                row[0] = networkName;
+                row[1] = "BussEvent";
+                row[2] = enterpriseName1;
+                row[3] = name;
+                row[4] = uName;
+                row[5] = pwd;
+                ModelNew.addRow(row);
+            } else if (enterpriseType1.equals("rest") && enterpriseDirec != null) {
+                rest res1 = enterpriseDirec.findrest(enterpriseName1);
+                res1.addManager(uName, uName, pwd);
+                systAdmin.adduser(uName, pwd, "rest");
+
+                row[0] = networkName;
+                row[1] = "rest";
+                row[2] = enterpriseName1;
+                row[3] = name;
+                row[4] = uName;
+                row[5] = pwd;
+                ModelNew.addRow(row);
+            } else if (enterpriseType1.equals("Hotel") && enterpriseDirec != null) {
+                Hotel hotel1 = enterpriseDirec.findHotel(enterpriseName1);
+                hotel1.addManager(name, uName, pwd);
+                systAdmin.adduser(uName, pwd, "Hotel");
+                row[0] = networkName;
+                row[1] = "Hotel";
+                row[2] = enterpriseName1;
+                row[3] = name;
+                row[4] = uName;
+                row[5] = pwd;
+                ModelNew.addRow(row);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, String.format("This uName '%s' already exists", uName));
+        }
+        JOptionPane.showMessageDialog(this, "Manager added successfully");
+        nameField.setText("");
+        uNameField.setText("");
+        pwdField.setText("");
+        enterpriseName.setSelectedIndex(0);
+        enterpriseType.setSelectedIndex(0);
+        networkType.setSelectedIndex(0);
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        if (jTable1.getSelectedRowCount() != 1) {
+            return;
+        }
+
+        String networkName = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
+
+        String eType = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String eName = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
+
+        String managerName = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String manageruName = ModelNew.getValueAt(jTable1.getSelectedRow(), 4).toString();
+        String managerpwd = ModelNew.getValueAt(jTable1.getSelectedRow(), 5).toString();
+
+        nameField.setText(managerName);
+        uNameField.setText(manageruName);
+        pwdField.setText(managerpwd);
+
+        networkType.setSelectedItem(networkName);
+        enterpriseName.setSelectedItem(eName);
+        enterpriseType.setSelectedItem(eType);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        callOnCreateMethod.run();
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

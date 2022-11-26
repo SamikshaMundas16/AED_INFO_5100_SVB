@@ -4,17 +4,84 @@
  */
 package ui.systAdm;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModelNew;
+import ModelNew.Cust;
+import ModelNew.CustDirectory;
+import ModelNew.systAdmin;
+import ui.main.Validator;
+
 /**
  *
  * @author doshi
  */
 public class ManageCustPanel extends javax.swing.JPanel {
 
+    private systAdmin systAdmin;
+    private Runnable callOnCreateMethod;
+    
     /**
      * Creates new form ManageCustPanel
      */
-    public ManageCustPanel() {
+    public ManageCustPanel(systAdmin systAdmin, Runnable callOnCreateMethod) {
         initComponents();
+        this.systAdmin = systAdmin;
+        this.callOnCreateMethod = callOnCreateMethod;
+        populateTable();
+        setBackground(new java.awt.Color(255, 204, 204));
+        dltBtn.setBackground(new java.awt.Color(244, 120, 140));
+        dltBtn.setOpaque(true);
+        addButton.setBackground(new java.awt.Color(244, 120, 140));
+        addButton.setOpaque(true);
+        updateButton.setBackground(new java.awt.Color(244, 120, 140));
+        updateButton.setOpaque(true);
+        backButton.setBackground(new java.awt.Color(244, 120, 140));
+        backButton.setOpaque(true);
+    }
+
+    public boolean validateName() {
+        if (nameField.getText().matches("[a-zA-Z]{2,19}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : name should contain only alphabets");
+            return false;
+        }
+    }
+
+    public boolean validatephoneNum() {
+        if (phoneField.getText().matches("[0-9]{10}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid contcat: phone should contain only 10 digits");
+            return false;
+        }
+    }
+
+    public boolean validateCity() {
+        if (cityField.getText().matches("[a-zA-Z]{2,19}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : city should contain only alphabets");
+            return false;
+        }
+    }
+
+    public boolean validateAddress() {
+        if (addressField.getText().matches("[a-zA-Z]{2,19}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : address should contain only alphabets");
+            return false;
+        }
+    }
+
+    public boolean pwdName() {
+        if (pwdField.getText().matches("[a-zA-Z]{3}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : pwd should contain only 3 inputs");
+            return false;
+        }
     }
 
     /**
@@ -348,4 +415,19 @@ public class ManageCustPanel extends javax.swing.JPanel {
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
+    
+    private void populateTable() {
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        ModelNew.setRowCount(0);
+        Object row[] = new Object[10];
+        for (Cust Cust : systAdmin.getCustDirec().getListOfCust()) {
+            row[0] = Cust.getName();
+            row[1] = Cust.getphone();
+            row[2] = Cust.getCity();
+            row[3] = Cust.getAddress();
+            row[4] = Cust.getuName();
+            row[5] = Cust.getpwd();
+            ModelNew.addRow(row);
+        }
+    }
 }
