@@ -4,10 +4,44 @@
  */
 package ModelNew;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  *
  * @author Samikshan
  */
-public class DeliManOrg {
-    
+
+public class DeliManOrg extends Org{
+
+    private List<DeliMan> listOfDeliMan;
+
+  public DeliManOrg(String name, String phone, String city) {
+        super(name, phone, city);
+        this .listOfDeliMan = new ArrayList<>();
+    }
+  
+    public List<DeliMan> getListOfDeliMan() {
+        return listOfDeliMan;
+    }
+
+    public void setListOfDeliMan(List<DeliMan> listOfDeliMan) {
+        this.listOfDeliMan = listOfDeliMan;
+    }
+
+    public void addDeliMan(String name, String city, String user, String pwd1) {
+        DeliMan del = new DeliMan(name, city, user, pwd1);
+        listOfDeliMan.add(del);
+        System.out.println("DeliMan manager added is " + listOfDeliMan.size());
+    }
+
+    public void dltDeliMan(DeliManOrg del) {
+     listOfDeliMan.remove(del);
+    }
+
+    public void dltManager(Manager man) {
+      listOfManager.remove(man);
+    }
+
 }
