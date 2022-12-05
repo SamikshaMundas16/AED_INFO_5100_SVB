@@ -50,21 +50,4 @@ public class HealthClubService extends Service{
         totalprice += type.price;
     }
     
-    public String toString() {
-        StringBuilder sb = new StringBuilder("\nHealth club service dtls:");
-        sb.append("\n").append(TAB).append("Health club: ").append(enterprise);
-        sb.append("\n").append(TAB).append("Date of appointment: ").append(getDate());
-        sb.append("\n").append(TAB).append("Status: ").append(getStatus());
-        if (HClubServices == null || HClubServices.isEmpty()) {
-            sb.append("\n").append(TAB).append("No services selected for this Book.");
-        } else {
-            sb.append("\n").append(TAB).append("Below are the dtls of services included for your appointment:");
-            for (HClubServiceType service : HClubServices) {
-                sb.append("\n").append(TAB).append(TAB)
-                        .append(String.format("Service type: %s, price: $%d", service.toString(), service.getPrice()));
-            }
-            sb.append("\n").append(TAB).append("Total price for health club: $").append(totalprice);
-        }
-        return sb.toString();
-    }
 }
