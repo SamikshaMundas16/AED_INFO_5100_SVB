@@ -4,18 +4,52 @@
  */
 package ui.EventManageRole;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModelNew;
+import ModelNew.Book;
+import ModelNew.BussEvent;
+import ModelNew.CaterService;
+import ModelNew.Cust;
+import ModelNew.CustDirectory;
+import ModelNew.DecorServices;
+import ModelNew.Org;
+import ModelNew.PhotoService;
+import ModelNew.systAdmin;
+import ModelNew.services.BussEventService;
+import ModelNew.services.Service;
+
 /**
  *
  * @author Samikshan
  */
 public class ViewTaskForEvt extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ViewTaskForEvt
-     */
-    public ViewTaskForEvt() {
+    private systAdmin systAdmin;
+    private Runnable callOnCreateMethod;
+    private String user;
+    private String type;
+    private BussEvent BussEvent;
+
+    public ViewTaskForEvt(systAdmin systAdmin, Runnable callOnCreateMethod, String user, String type, BussEvent BussEvent) {
         initComponents();
+        this.systAdmin = systAdmin;
+        this.callOnCreateMethod = callOnCreateMethod;
+        this.user = user;
+        this.type = type;
+        this.BussEvent = BussEvent;
+        populateComboBox();
+        populateTable();
+        setBackground(new java.awt.Color(255, 204, 204));
+           backBtn.setBackground(new java.awt.Color(244, 120, 140));
+        backBtn.setOpaque(true);
+       confirmBtn.setBackground(new java.awt.Color(244, 120, 140));
+       confirmBtn.setOpaque(true);
+       denyButton.setBackground(new java.awt.Color(244, 120, 140));
+       confirmBtn.setOpaque(true);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -274,6 +308,74 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
     }//GEN-LAST:event_denyButtonActionPerformed
 
 
+    private void populateTable() {
+
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        ModelNew.setRowCount(0);
+
+        CustDirectory CustDirec = systAdmin.getCustDirec(); //get all Custs
+        for (Cust Cust : CustDirec.getListOfCust()) {
+            for (Book Book : Cust.getBkList()) {      //get Book dtls each Cust
+                for (Service service : Book.getServices()) {       //get services under Book
+
+                    if (service.getEnterprise().getName().equals(BussEvent.getName())) {
+
+                        BussEventService BussEventService = (BussEventService) service;
+                        Object row[] = new Object[10];
+                        row[0] = Book;
+                        row[1] = Cust;
+                        row[2] = BussEventService.getStatus();
+                        row[3] = "NO";
+                        row[4] = "NO";
+                        row[5] = "NO";
+
+                        for (BussEventService.BussEventServiceType type : BussEventService.getBussEventServiceTypes().keySet()) {
+                            switch (type) {
+                                case CATERING:
+                                    row[3] = "YES";
+                                    break;
+                                case DECOR:
+                                    row[4] = "YES";
+                                    break;
+                                case PHOTOGRAPHY:
+                                    row[5] = "YES";
+                                    break;
+                            }
+                        }
+                        ModelNew.addRow(row);
+                    }
+                }
+            }
+        }
+
+    }
+
+    private void populateComboBox() {
+        cateringOrg.removeAllItems();
+        decorOrg.removeAllItems();
+        photographyOrg.removeAllItems();
+
+        cateringOrg.addItem(null);
+        decorOrg.addItem(null);
+        photographyOrg.addItem(null);
+
+        for (CaterService catering : BussEvent.getListOfCatering()) {
+            if (catering != null) {
+                cateringOrg.addItem(catering);
+            }
+        }
+        for (DecorServices decor : BussEvent.getListOfDecors()) {
+            if (decor != null) {
+                decorOrg.addItem(decor);
+            }
+        }
+        for (PhotoService photography : BussEvent.getListOfPhotoServices()) {
+            if (photography != null) {
+                photographyOrg.addItem(photography);
+            }
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JComboBox<CateringService> cateringOrg;
