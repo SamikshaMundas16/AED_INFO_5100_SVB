@@ -4,17 +4,53 @@
  */
 package ui.EventManageRole;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModelNew;
+import ModelNew.BussEvent;
+import ModelNew.CaterService;
+import ModelNew.DecorServices;
+import ModelNew.entDir;
+import ModelNew.Network;
+import ModelNew.PhotoService;
+import ModelNew.systAdmin;
+
 /**
  *
  * @author Samikshan
  */
 public class ManageOrgForEvt extends javax.swing.JPanel {
 
+    private systAdmin systAdmin;
+    private Runnable callOnCreateMethod;
+    private String type;
+    private String user;
+    private Network network;
+    
     /**
      * Creates new form ManageOrgForEvt
      */
-    public ManageOrgForEvt() {
+    public ManageOrgForEvt(systAdmin systAdmin, Runnable callOnCreateMethod, String user, String type, Network network) {
         initComponents();
+        this.systAdmin = systAdmin;
+        this.callOnCreateMethod = callOnCreateMethod;
+        this.user = user;
+        this.type = type;
+        this.network = network;
+
+        cityNameTextField.setText(network.getName());
+        cityNameTextField.setEditable(false);
+
+        populateTable();
+        setBackground(new java.awt.Color(255, 204, 204));
+        dltBtn.setBackground(new java.awt.Color(244, 120, 140));
+        dltBtn.setOpaque(true);
+        addBtn.setBackground(new java.awt.Color(244, 120, 140));
+        addBtn.setOpaque(true);
+        updateBtn.setBackground(new java.awt.Color(244, 120, 140));
+        updateBtn.setOpaque(true);
+        backButton.setBackground(new java.awt.Color(244, 120, 140));
+        backButton.setOpaque(true);
     }
 
     /**
@@ -202,6 +238,50 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to dlt");
+            return;
+        }
+        String OrgType = (String) ModelNew.getValueAt(selectedRowIndex, 0);
+        String OrgName = (String) ModelNew.getValueAt(selectedRowIndex, 1);
+        entDir enterpriseDirec = network.getentDir();
+        for (BussEvent event : enterpriseDirec.getListOfEvents()) {
+            if (event.findManager(user) != null) {
+                if (OrgType.equals("Catering") && event.getListOfCatering() != null) {
+                    for (CaterService catering : event.getListOfCatering()) {
+                        if (catering.getName().equals(OrgName)) {
+                            event.dltCatering(catering);
+                            JOptionPane.showMessageDialog(this, "dltd successfully");
+                            populateTable();
+                        }
+                    }
+                } else if (OrgType.equals("Photography") && event.getListOfPhotoServices() != null) {
+                    for (PhotoService photo : event.getListOfPhotoServices()) {
+                        if (photo.getName().equals(OrgName)) {
+                            event.dltPhotography(photo);
+                            JOptionPane.showMessageDialog(this, "dltd successfully");
+                            populateTable();
+                        }
+                    }
+                } else if (OrgType.equals("Decor") && event.getListOfDecors() != null) {
+                    for (DecorServices decor : event.getListOfDecors()) {
+                        if (decor.getName().equals(OrgName)) {
+                            event.dltDecor(decor);
+                            JOptionPane.showMessageDialog(this, "dltd successfully");
+                            populateTable();
+                        }
+                    }
+                } else {
+                    return;
+                }
+
+            }
+        }
+
+                                         
+
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -341,4 +421,51 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> orgCombo;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        ModelNew.setRowCount(0);
+        Object row[] = new Object[10];
+        String orgType1 = orgCombo.getSelectedItem().toString();
+        Network network1 = systAdmin.findNetwork(network.getName());
+        entDir enterpriseDirec = network1.getentDir();
+        if (enterpriseDirec == null) {
+            return;
+        }
+        for (BussEvent event : enterpriseDirec.getListOfEvents()) {
+            if (event.findManager(user) != null) {
+                if (event.getListOfCatering() != null) {
+                    row[0] = "Catering";
+                    for (CaterService catering : event.getListOfCatering()) {
+                        row[0] = "Catering";
+                        row[1] = catering.getName();
+                        row[2] = catering.getphone();
+                        row[3] = network1.getName();
+                        ModelNew.addRow(row);
+                    }
+                }
+                if (event.getListOfDecors() != null) {
+                    row[0] = "Decor";
+                    for (DecorServices decor : event.getListOfDecors()) {
+                        row[0] = "Decor";
+                        row[1] = decor.getName();
+                        row[2] = decor.getphone();
+                        row[3] = network.getName();
+                        ModelNew.addRow(row);
+                    }
+                }
+                if (event.getListOfPhotoServices() != null) {
+                    row[0] = "Photography";
+                    for (PhotoService photo : event.getListOfPhotoServices()) {
+                        row[0] = "Photography";
+                        row[1] = photo.getName();
+                        row[2] = photo.getphone();
+                        row[3] = network.getName();
+                        ModelNew.addRow(row);
+                    }
+                }
+
+            }
+        }
+    }
 }
