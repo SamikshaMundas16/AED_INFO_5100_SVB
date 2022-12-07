@@ -64,57 +64,75 @@ public class HOrgAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        addButton = new javax.swing.JButton();
+        nameField = new javax.swing.JTextField();
+        orgCombo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        updateButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        usernameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+        lblsysadmin = new javax.swing.JLabel();
+        deleteButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        laundaryOrg = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        transportationOrg = new javax.swing.JComboBox<>();
-        viewTask = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        orgName = new javax.swing.JComboBox<>();
+        networkName = new javax.swing.JTextField();
 
-        jTable1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ORDER ID", "CUSTOMER NAME", "STATUS", "LAUNDARY", "TRANSPORTATION"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("SELECT A LAUNDARY ORG");
-
-        laundaryOrg.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        laundaryOrg.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        addButton.setText("ADD");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                laundaryOrgActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel2.setText("SELECT A TRANSPORTATION ORG");
-
-        viewTask.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        viewTask.setText("ASSIGN AND CONFIRM TASK");
-        viewTask.addActionListener(new java.awt.event.ActionListener() {
+        nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewTaskActionPerformed(evt);
+                nameFieldActionPerformed(evt);
             }
         });
 
-        backButton.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        orgCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laundary", "Transportation" }));
+        orgCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orgComboActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("ORGANIZATION TYPE");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("NAME");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("NETWORK");
+
+        updateButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        updateButton.setText("UPDATE");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("ORGANIZATION NAME");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("USERNAME");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("PASSWORD");
+
+        backButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         backButton.setText("BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,147 +140,355 @@ public class HOrgAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel3.setText("VIEW ORDER DETAILS FOR HOTEL");
+        lblsysadmin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblsysadmin.setText("MANAGE HOTEL ORGANISATION ADMIN");
+
+        deleteButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deleteButton.setText("DELETE");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NETWORK NAME", "ORGANIZATION TYPE", "ORGANIZATION NAME", "NAME", "USERNAME", "PASSWORD"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        orgName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orgNameActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(deleteButton)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(backButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(networkName, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(orgCombo, 0, 187, Short.MAX_VALUE)
+                                    .addComponent(orgName, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(83, 83, 83)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                                    .addComponent(usernameField)
+                                    .addComponent(passwordField)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
+                        .addComponent(lblsysadmin))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(330, 330, 330)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(updateButton)))
+                .addContainerGap(138, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(backButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblsysadmin)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(deleteButton)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(networkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel4)))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(orgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(125, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 866, Short.MAX_VALUE)
+            .addGap(0, 1035, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(15, 15, 15)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(83, 83, 83)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(laundaryOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(transportationOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(44, 44, 44))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(702, 702, 702))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(147, 147, 147))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(262, 262, 262)
-                            .addComponent(viewTask)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(16, 16, 16)))
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGap(0, 787, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(60, 60, 60)
-                    .addComponent(backButton)
-                    .addGap(14, 14, 14)
-                    .addComponent(jLabel3)
-                    .addGap(45, 45, 45)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(89, 89, 89)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(laundaryOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(transportationOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                    .addComponent(viewTask, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(60, 60, 60)))
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void laundaryOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laundaryOrgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_laundaryOrgActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        Object row[] = new Object[20];
+        String orgType = orgCombo.getSelectedItem().toString();
+        String orgName1 = orgName.getSelectedItem().toString();
+        String name = nameField.getText();
+        String uName = uNameField.getText();
+        String pwd = pwdField.getText();
 
-    private void viewTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTaskActionPerformed
-        int selectedRowIndex = jTable1.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a Book to assign tasks.");
+        if (!Validator.validateName(this, name) || !Validator.validateuName(this, uName)
+            || !Validator.validatepwd(this, pwd)) {
+            return;
+        }
+
+        if (!systAdmin.userExistsInSystem(uName)) {
+
+            entDir enterpriseDirec = network.getentDir();
+            List<Hotel> list = enterpriseDirec.getListOfHotel();
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).findManager(user) != null) {    //if manager found for hotel enterprise
+                    if (orgType.equals("Laundary")) {
+                        List<LaundaryOrg> org1 = list.get(i).getLaundaryOrg();
+                        for (int j = 0; j < org1.size(); j++) {
+                            if (org1.get(j).getName().equals(orgName1)) {
+                                org1.get(j).addManager(name, network.getName(), uName, pwd); // add managers for each org
+                                row[0] = network.getName();
+                                row[1] = orgType;
+                                row[2] = orgName1;
+                                row[3] = name;
+                                row[4] = uName;
+                                row[5] = pwd;
+                                ModelNew.addRow(row);
+                                systAdmin.adduser(uName, pwd, "Laundary");
+                                JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
+                                return;
+                            }
+                        }
+                    } else if (orgType.equals("Transportation")) {
+                        List<TransportOrg> org2 = list.get(i).gettransportOrgList();
+                        for (int j = 0; j < org2.size(); j++) {
+                            if (org2.get(j).getName().equals(orgName1)) {
+                                org2.get(j).addManager(name, network.getName(), uName, pwd);
+                                row[0] = network.getName();
+                                row[1] = orgType;
+                                row[2] = orgName1;
+                                row[3] = name;
+                                row[4] = uName;
+                                row[5] = pwd;
+                                ModelNew.addRow(row);
+                                systAdmin.adduser(uName, pwd, "Transportation");
+                                JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, " This uName already exists");
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void orgComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgComboActionPerformed
+        String orgType = orgCombo.getSelectedItem().toString();
+        orgName.removeAllItems();
+
+        entDir enterpriseDirec = network.getentDir();
+        List<Hotel> list = enterpriseDirec.getListOfHotel();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).findManager(user) != null) {
+                if (orgType.equals("Laundary")) {
+                    List<LaundaryOrg> org1 = list.get(i).getLaundaryOrg();
+                    for (int j = 0; j < org1.size(); j++) {
+                        orgName.addItem(org1.get(j).getName());
+                        return;
+                    }
+                } else {
+                    List<TransportOrg> org3 = list.get(i).gettransportOrgList();
+                    for (int j = 0; j < org3.size(); j++) {
+                        orgName.addItem(org3.get(j).getName());
+                    }
+                }
+                return;
+            }
+        }
+    }//GEN-LAST:event_orgComboActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        if (jTable1.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update");
             return;
         }
 
         DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Book Book = (Book) ModelNew.getValueAt(selectedRowIndex, 0);
+        if (jTable1.getSelectedRowCount() == 1) {
 
-        ServiceHotel ServiceHotel = null;
-        for (Service service : Book.getServices()) {
-            if (hotel.getName().equals(service.getEnterprise().getName())) {
-                ServiceHotel = (ServiceHotel) service;
-                break;
+            String orgType = orgCombo.getSelectedItem().toString();
+            String orgname = orgName.getSelectedItem().toString();
+            String uName = uNameField.getText();
+            String pwd = pwdField.getText();
+
+            entDir enterpriseDirec = network.getentDir();
+            for (Hotel hotel : enterpriseDirec.getListOfHotel()) {
+                if (orgType.equals("Laundary") && hotel.getLaundaryOrg() != null) {
+                    for (LaundaryOrg laundary : hotel.getLaundaryOrg()) {
+                        for (Manager man : laundary.getListOfManager()) {
+                            if (man.getuName().equals(uNameField.getText())) {
+                                man.setName(nameField.getText());
+                                man.setpwd(pwdField.getText());
+                                systAdmin.updateuser(uName, pwd);
+                                JOptionPane.showMessageDialog(this, "Updated successfully");
+                                populateTable();
+                                return;
+                            }
+                        }
+                    }
+                } else if (orgType.equals("Transportation") && hotel.gettransportOrgList() != null) {
+                    for (TransportOrg trans : hotel.gettransportOrgList()) {
+                        for (Manager man : trans.getListOfManager()) {
+                            if (man.getuName().equals(uNameField.getText())) {
+                                man.setName(nameField.getText());
+                                man.setpwd(pwdField.getText());
+                                systAdmin.updateuser(uName, pwd);
+                                JOptionPane.showMessageDialog(this, "Updated successfully");
+                                populateTable();
+                                return;
+                            }
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid Org");
+                }
             }
         }
-
-        if (ServiceHotel == null) {
-            JOptionPane.showMessageDialog(this, "Cannot find hotel");
-            return;
-        }
-
-        if (!ServiceHotel.getStatus().equals(Service.Status.PENDING)) {
-            JOptionPane.showMessageDialog(this, String.format("Book '%s' should be 'PENDING' state to be accepted.",
-                Book.getId()));
-        return;
-        }
-
-        LaundaryOrg laundary = (LaundaryOrg) laundaryOrg.getSelectedItem();
-        TransportOrg transportation = (TransportOrg) TransportOrg.getSelectedItem();
-
-        List<Org> Orgs = new ArrayList<>();
-        for (ServiceHotel.ServiceHotelType type : ServiceHotel.getServiceHotels()) {
-            switch (type) {
-                case LAUNDARY:
-                if (laundary == null) {
-                    JOptionPane.showMessageDialog(this, "Please select laundary Org to be assinged for the Book.");
-                    return;
-                } else {
-                    Orgs.add(laundary);
-                }
-                break;
-                case TRANSPORTATION:
-                if (transportation == null) {
-                    JOptionPane.showMessageDialog(this, "Please select transportation Org to be assinged for the Book.");
-                    return;
-                } else {
-                    Orgs.add(transportation);
-                }
-                break;
-            }
-        }
-
-        for (Org Org : Orgs) {
-            ServiceHotel.addOrg(Org);
-        }
-        ServiceHotel.setStatus(Service.Status.CONFIRMED);
-        JOptionPane.showMessageDialog(this, "Assigned all hotel services to the Book: " + Book.getId());
-        populateTable();
-    }//GEN-LAST:event_viewTaskActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        String city = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String orgType = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String oName = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String managerName = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String manageruName = ModelNew.getValueAt(jTable1.getSelectedRow(), 4).toString();
+        String managerpwd = ModelNew.getValueAt(jTable1.getSelectedRow(), 5).toString();
+
+        nameField.setText(managerName);
+        uNameField.setText(manageruName);
+        pwdField.setText(managerpwd);
+        uNameField.setEnabled(false);
+
+        orgCombo.setSelectedItem(orgType);
+        orgName.setSelectedItem(oName);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void orgNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orgNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<LaundaryOrg> laundaryOrg;
-    private javax.swing.JComboBox<TransportationOrg> transportationOrg;
-    private javax.swing.JButton viewTask;
+    private javax.swing.JLabel lblsysadmin;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JTextField networkName;
+    private javax.swing.JComboBox<String> orgCombo;
+    private javax.swing.JComboBox<String> orgName;
+    private javax.swing.JTextField passwordField;
+    private javax.swing.JButton updateButton;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
