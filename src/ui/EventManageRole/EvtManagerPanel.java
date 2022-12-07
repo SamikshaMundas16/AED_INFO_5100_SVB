@@ -35,9 +35,7 @@ public class EvtManagerPanel extends javax.swing.JPanel {
     /**
      * Creates new form EvtManagerPanel
      */
-    public EvtManagerPanel() {
-        initComponents();
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

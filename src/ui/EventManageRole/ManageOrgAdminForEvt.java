@@ -4,17 +4,69 @@
  */
 package ui.EventManageRole;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModelNew;
+import ModelNew.BussEvent;
+import ModelNew.CaterService;
+import ModelNew.DecorServices;
+import ModelNew.entDir;
+import ModelNew.Manager;
+import ModelNew.Network;
+import ModelNew.PhotoService;
+import ModelNew.systAdmin;
+import ui.main.Validator;
+
+
 /**
  *
  * @author Samikshan
  */
 public class ManageOrgAdminForEvt extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ManageOrgAdminForEvt
-     */
-    public ManageOrgAdminForEvt() {
+    private systAdmin systAdmin;
+    private Runnable callOnCreateMethod;
+    private String user;
+    private String type;
+    private Network network;
+
+    public ManageOrgAdminForEvt(systAdmin systAdmin, Runnable callOnCreateMethod, String user, String type, Network network) {
         initComponents();
+        this.systAdmin = systAdmin;
+        this.callOnCreateMethod = callOnCreateMethod;
+        this.user = user;
+        this.type = type;
+        this.network = network;
+        networkName.setText(network.getName());
+        networkName.setEditable(false);
+        populateTable();
+        setBackground(new java.awt.Color(255, 204, 204));
+        dltBtn.setBackground(new java.awt.Color(244, 120, 140));
+        dltBtn.setOpaque(true);
+        addBtn.setBackground(new java.awt.Color(244, 120, 140));
+        addBtn.setOpaque(true);
+        updateBtn.setBackground(new java.awt.Color(244, 120, 140));
+        updateBtn.setOpaque(true);
+        backButton.setBackground(new java.awt.Color(244, 120, 140));
+        backButton.setOpaque(true);
+    }
+
+    public boolean validateName() {
+        if (nameField.getText().matches("[a-zA-Z]{2,19}") && nameField.getText() != null) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : name should contain only alphabets");
+            return false;
+        }
+    }
+
+    public boolean pwdName() {
+        if (pwdField.getText().matches("[a-zA-Z]{3,}") && pwdField.getText() != null) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input : pwd should contain more than 3 or more letters");
+            return false;
+        }
     }
 
     /**
@@ -226,6 +278,62 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to dlt");
+            return;
+        }
+        String orgType = (String) ModelNew.getValueAt(selectedRowIndex, 1);
+        String OrgName = (String) ModelNew.getValueAt(selectedRowIndex, 2);
+        String selecteduser = (String) ModelNew.getValueAt(selectedRowIndex, 4);
+        entDir enterpriseDirec = network.getentDir();
+        for (BussEvent event : enterpriseDirec.getListOfEvents()) {
+            if (event.findManager(user) != null) {
+                if (orgType.equals("Catering") && event.getListOfCatering() != null) {
+                    for (CaterService catering : event.getListOfCatering()) {
+                        if (catering.getName().equals(OrgName)) {
+                            for (Manager man : catering.getListOfManager()) {
+                                if (man.getuName().equals(selecteduser)) {
+                                    catering.dltManager(man);
+                                    JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
+                                    populateTable();
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                } else if (orgType.equals("Decor") && event.getListOfDecors() != null) {
+                    for (DecorServices decor : event.getListOfDecors()) {
+                        if (decor.getName().equals(OrgName)) {
+                            for (Manager man : decor.getListOfManager()) {
+                                if (man.getuName().equals(selecteduser)) {
+                                    decor.dltManager(man);
+                                    JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
+                                    populateTable();
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    for (PhotoService photo : event.getListOfPhotoServices()) {
+                        if (photo.getName().equals(OrgName)) {
+                            for (Manager man : photo.getListOfManager()) {
+                                if (man.getuName().equals(selecteduser)) {
+                                    photo.dltManager(man);
+                                    JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
+                                    populateTable();
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+                                          
+
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void orgComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgComboActionPerformed
@@ -438,4 +546,62 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
     private javax.swing.JButton updateBtn;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        ModelNew.setRowCount(0);
+        Object row[] = new Object[10];
+        String orgType1 = orgCombo.getSelectedItem().toString();
+        Network network1 = systAdmin.findNetwork(network.getName());
+        entDir enterpriseDirec = network.getentDir();
+        if (enterpriseDirec == null) {
+            return;
+        }
+        for (BussEvent event : enterpriseDirec.getListOfEvents()) {
+            if (event.findManager(user) != null) {
+                if (event.getListOfCatering() != null) {
+                    row[0] = "Catering";
+                    for (CaterService catering : event.getListOfCatering()) {
+                        for (Manager manager : catering.getListOfManager()) {       //add manager 
+                            row[0] = network1.getName();
+                            row[1] = "Catering";
+                            row[2] = catering.getName();
+                            row[3] = manager.getName();
+                            row[4] = manager.getuName();
+                            row[5] = manager.getpwd();
+                            ModelNew.addRow(row);
+                        }
+                    }
+                }
+                if (event.getListOfDecors() != null) {
+                    row[0] = "Decor";
+                    for (DecorServices decor : event.getListOfDecors()) {
+                        for (Manager manager : decor.getListOfManager()) {       //add manager 
+                            row[0] = network1.getName();
+                            row[1] = "Decor";
+                            row[2] = decor.getName();
+                            row[3] = manager.getName();
+                            row[4] = manager.getuName();
+                            row[5] = manager.getpwd();
+                            ModelNew.addRow(row);
+                        }
+                    }
+                }
+                if (event.getListOfPhotoServices() != null) {
+                    row[0] = "Photography";
+                    for (PhotoService photo : event.getListOfPhotoServices()) {
+                        for (Manager manager : photo.getListOfManager()) {       //add manager 
+                            row[0] = network1.getName();
+                            row[1] = "Photography";
+                            row[2] = photo.getName();
+                            row[3] = manager.getName();
+                            row[4] = manager.getuName();
+                            row[5] = manager.getpwd();
+                            ModelNew.addRow(row);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
