@@ -26,19 +26,266 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        confirmBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        decorOrg = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        cateringOrg = new javax.swing.JComboBox<>();
+        backBtn = new javax.swing.JButton();
+        photographyOrg = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        denyButton = new javax.swing.JButton();
+
+        jLabel4.setText("SELECT A PHOTOGRAPHY ORG");
+
+        jTable1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "BOOKING ID", "NAME", "STATUS", "CATERING", "DECOR", "PHOTOGRAPHY"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        confirmBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        confirmBtn.setText("CONFIRM REQUEST");
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("SELECT A CATERING ORG");
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setText("VIEW ORDER DETAILS FOR EVENTS");
+
+        backBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        backBtn.setText("BACK");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("SELECT A DECOR ORG");
+
+        denyButton.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        denyButton.setText("DENY REQUEST");
+        denyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                denyButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(80, 80, 80)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(cateringOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(72, 72, 72)
+                                        .addComponent(decorOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(70, 70, 70)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(photographyOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(146, 146, 146)
+                                .addComponent(confirmBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)
+                                .addComponent(denyButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(199, 199, 199)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(29, 29, 29)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(backBtn)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(decorOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(photographyOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cateringOrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(denyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(180, 180, 180))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a Book to assign tasks.");
+            return;
+        }
+
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        Book Book = (Book) ModelNew.getValueAt(selectedRowIndex, 0);
+
+        BussEventService eventService = null;
+        for (Service service : Book.getServices()) {
+            if (BussEvent.getName().equals(service.getEnterprise().getName())) {
+                eventService = (BussEventService) service;
+                break;
+            }
+        }
+
+        if (eventService == null) {
+            JOptionPane.showMessageDialog(this, "Cannot find business event");
+            return;
+        }
+
+        if (!eventService.getStatus().equals(Service.Status.PENDING)) {
+            JOptionPane.showMessageDialog(this, String.format("Book '%s' should be 'PENDING' state to be accepted.",
+                Book.getId()));
+        return;
+        }
+
+        CaterService CaterService = (CaterService) cateringOrg.getSelectedItem();
+        PhotoService PhotoService = (PhotoService) photographyOrg.getSelectedItem();
+        DecorServices decorService = (DecorServices) decorOrg.getSelectedItem();
+
+        List<Org> Orgs = new ArrayList<>();
+        for (BussEventService.BussEventServiceType type : eventService.getBussEventServiceTypes().keySet()) {
+            switch (type) {
+                case CATERING:
+                if (CaterService == null) {
+                    JOptionPane.showMessageDialog(this, "Please select catering Org to be assinged for the Book.");
+                    return;
+                } else {
+                    Orgs.add(CaterService);
+                }
+                break;
+                case DECOR:
+                if (decorService == null) {
+                    JOptionPane.showMessageDialog(this, "Please decor catering Org to be assinged for the Book.");
+                    return;
+                } else {
+                    Orgs.add(decorService);
+                }
+                break;
+                case PHOTOGRAPHY:
+                if (PhotoService == null) {
+                    JOptionPane.showMessageDialog(this, "Please select photography Org to be assinged for the Book.");
+                    return;
+                } else {
+                    Orgs.add(PhotoService);
+                }
+                break;
+            }
+        }
+
+        for (Org Org : Orgs) {
+            eventService.addOrg(Org);
+        }
+        eventService.setStatus(Service.Status.CONFIRMED);
+        JOptionPane.showMessageDialog(this, "Assigned all event services to the Book: " + Book.getId());
+        populateTable();
+    }//GEN-LAST:event_confirmBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        callOnCreateMethod.run();
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void denyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_denyButtonActionPerformed
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a Book to deny request.");
+            return;
+        }
+
+        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        Book Book = (Book) ModelNew.getValueAt(selectedRowIndex, 0);
+
+        BussEventService eventService = null;
+        for (Service service : Book.getServices()) {
+            if (BussEvent.getName().equals(service.getEnterprise().getName())) {
+                eventService = (BussEventService) service;
+                break;
+            }
+        }
+
+        if (eventService == null) {
+            JOptionPane.showMessageDialog(this, "Cannot find business event");
+            return;
+        }
+
+        if (!eventService.getStatus().equals(Service.Status.PENDING)) {
+            JOptionPane.showMessageDialog(this, String.format("Book '%s' should be 'PENDING' state to be denied.",
+                Book.getId()));
+        return;
+        }
+
+        eventService.setStatus(Service.Status.REJECTED);
+        JOptionPane.showMessageDialog(this, "Denied Book request with id: " + Book.getId());
+        populateTable();
+    }//GEN-LAST:event_denyButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
+    private javax.swing.JComboBox<CateringService> cateringOrg;
+    private javax.swing.JButton confirmBtn;
+    private javax.swing.JComboBox<model.DecorServices> decorOrg;
+    private javax.swing.JButton denyButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<model.PhotographyService> photographyOrg;
     // End of variables declaration//GEN-END:variables
 }
