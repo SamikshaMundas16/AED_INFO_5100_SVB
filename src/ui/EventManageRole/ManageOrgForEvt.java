@@ -42,7 +42,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
         cityNameTextField.setEditable(false);
 
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         dltBtn.setBackground(new java.awt.Color(244, 120, 140));
         dltBtn.setOpaque(true);
         addBtn.setBackground(new java.awt.Color(244, 120, 140));
@@ -78,6 +78,8 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
         cityNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityNameTextFieldActionPerformed(evt);
@@ -97,6 +99,12 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("CONTACT");
+
+        phoneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneFieldActionPerformed(evt);
+            }
+        });
 
         backButton.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         backButton.setText("BACK");
@@ -367,10 +375,11 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
             return;
         }
         
-        if(contact.length()!=10){
+        if(phone.length()!=10){
             JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
             return;
         }
+        
 
         String orgType1 = orgCombo.getSelectedItem().toString();      // org-type (Phy org)
         entDir enterpriseDirc = network.getentDir();
@@ -407,6 +416,10 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

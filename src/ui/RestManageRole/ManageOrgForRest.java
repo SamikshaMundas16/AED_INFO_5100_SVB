@@ -36,18 +36,8 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         this.user = user;
         this.type = type;
         this.network = network;
-        setBackground(new java.awt.Color(255, 204, 204));
-        cityNameTextField.setText(network.getName());
-        cityNameTextField.setEditable(false);
-
-        dltBtn.setBackground(new java.awt.Color(244, 120, 140));
-        dltBtn.setOpaque(true);
-        addButton.setBackground(new java.awt.Color(244, 120, 140));
-        addButton.setOpaque(true);
-        updateButton.setBackground(new java.awt.Color(244, 120, 140));
-        updateButton.setOpaque(true);
-        backButton.setBackground(new java.awt.Color(244, 120, 140));
-        backButton.setOpaque(true);
+        
+        setBackground(new java.awt.Color(153,255,255));
 
         populateTable();
     }
@@ -77,6 +67,8 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         dltBtn = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -104,7 +96,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         jLabel1.setText("ORGANIZATION TYPE");
 
         orgCombo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        orgCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a organisation", "Deliveryman" }));
+        orgCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a organisation", "DeliMan" }));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setText("NAME");
@@ -202,7 +194,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 727, Short.MAX_VALUE)
+            .addGap(0, 736, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(40, 40, 40)
@@ -270,11 +262,11 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         entDir enterpriseDirc = network.getentDir();
 
         if (name == null || name.length() < 2) {
-            JOptionPane.showMessageDialog(this, "Org name should be at least 2 characters long.");
+            JOptionPane.showMessageDialog(this, "Organisation name should be at least 2 characters long.");
             return;
         }
         
-        if(contact.length()!=10){
+        if(phone.length()!=10){
             JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
             return;
         }
@@ -288,15 +280,11 @@ public class ManageOrgForRest extends javax.swing.JPanel {
                 row[2] = phone;
                 row[3] = networkName;
                 Model.addRow(row);
-                JOptionPane.showMessageDialog(this, "Org added successfully");
+                JOptionPane.showMessageDialog(this, "Organisation added successfully");
                 return;
             }
         }
     }//GEN-LAST:event_addButtonActionPerformed
-
-    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dltBtnActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         if (jTable1.getSelectedRowCount() != 1) {
@@ -310,7 +298,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
 
         entDir enterpriseDirec = network.getentDir();
         for (rest res : enterpriseDirec.getListOfrests()) {
-            if (orgType.equals("DeliMan") && res.getListOfDeliManOrg() != null) {
+            if (orgType.equals("DeliveryMan") && res.getListOfDeliManOrg() != null) {
                 for (DeliManOrg del : res.getListOfDeliManOrg()) {
                     if (del.getName().equals(orgname)) {
                         del.setName(nameField.getText());
@@ -323,6 +311,32 @@ public class ManageOrgForRest extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
+        String OrgType = (String) model.getValueAt(selectedRowIndex, 0);
+        String OrgName = (String) model.getValueAt(selectedRowIndex, 1);
+        entDir enterpriseDirec = network.getentDir();
+        for (rest res : enterpriseDirec.getListOfrests()) {
+            if (res.findManager(user) != null) {
+                if (res.getListOfDeliManOrg() != null) {
+                    for (DeliManOrg del : res.getListOfDeliManOrg()) {
+                        if (del.getName().equals(OrgName)) {
+                            del.dltDeliMan(del);
+                            JOptionPane.showMessageDialog(this, "Deleted successfully");
+                            populateTable();
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_dltBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -353,9 +367,9 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         for (rest rest : enterpriseDirec.getListOfrests()) {
             if (rest.findManager(user) != null) {
                 if (rest.getListOfDeliManOrg() != null) {
-                    row[0] = "DeliMan";
+                    row[0] = "DeliveryMan";
                     for (DeliManOrg delivery : rest.getListOfDeliManOrg()) {
-                        row[0] = "DeliMan";
+                        row[0] = "DeliveryMan";
                         row[1] = delivery.getName();
                         row[2] = delivery.getphone();
                         row[3] = network1.getName();

@@ -25,7 +25,7 @@ public class HManagerPanel extends javax.swing.JPanel {
         this.callOnCreateMethod2 = callOnCreateMethod2;
         this.callOnCreateMethod3 = callOnCreateMethod3;
         this.callOnCreateMethod4 = callOnCreateMethod4;
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         viewTask.setBackground(new java.awt.Color(244, 120, 140));
         viewTask.setOpaque(true);
         orgBtn.setBackground(new java.awt.Color(244, 120, 140));
@@ -52,6 +52,7 @@ public class HManagerPanel extends javax.swing.JPanel {
         viewTask = new javax.swing.JButton();
         manageRooms = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setLayout(null);
 
         lblsysadmin.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -67,7 +68,7 @@ public class HManagerPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(orgAdminBtn);
-        orgAdminBtn.setBounds(320, 290, 298, 40);
+        orgAdminBtn.setBounds(320, 290, 306, 40);
 
         orgBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         orgBtn.setText("MANAGE ORGANIZATION ");

@@ -4,11 +4,16 @@
  */
 package ui.systAdm;
 
+import ModelNew.AdvancedFeatures;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ModelNew.Cust;
 import ModelNew.CustDirectory;
+import ModelNew.api;
 import ModelNew.systAdmin;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ui.main.Validator;
 
 /**
@@ -28,7 +33,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
         this.systAdmin = systAdmin;
         this.callOnCreateMethod = callOnCreateMethod;
         populateTable();
-        setBackground(new java.awt.Color(0,0, 128));
+        setBackground(new java.awt.Color(153,255,255));
         dltBtn.setBackground(new java.awt.Color(244, 120, 140));
         dltBtn.setOpaque(true);
         addButton.setBackground(new java.awt.Color(244, 120, 140));
@@ -113,6 +118,10 @@ public class ManageCustPanel extends javax.swing.JPanel {
         pwdField = new javax.swing.JTextField();
         uNameField = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
         backButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         backButton.setText("BACK");
@@ -160,6 +169,12 @@ public class ManageCustPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        phoneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneFieldActionPerformed(evt);
+            }
+        });
+
         addButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         addButton.setText("ADD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +185,12 @@ public class ManageCustPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("USERNAME");
+
+        nameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameFieldActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("PASSWORD");
@@ -191,6 +212,9 @@ public class ManageCustPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("ADDRESS");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Email");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,6 +232,12 @@ public class ManageCustPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(backButton))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(316, 316, 316)
+                                .addComponent(lblsysadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,25 +253,23 @@ public class ManageCustPanel extends javax.swing.JPanel {
                                     .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(updateButton))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(137, 137, 137)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(21, 21, 21)
-                                                .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(70, 70, 70)
-                                        .addComponent(updateButton))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(backButton))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(316, 316, 316)
-                                .addComponent(lblsysadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(pwdField, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                                    .addComponent(jTextField1))))))))
                         .addGap(0, 173, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -271,7 +299,9 @@ public class ManageCustPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -295,7 +325,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 1, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,7 +352,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
                 if (Cust.getuName().equals(uName)) {
                     systAdmin.dltCust(Cust);
                     populateTable();
-                    JOptionPane.showMessageDialog(this, "Cust dltd successfully");
+                    JOptionPane.showMessageDialog(this, "Customer deleted successfully");
                     return;
                 }
             }
@@ -343,8 +373,8 @@ public class ManageCustPanel extends javax.swing.JPanel {
         addressField.setText(CustAddress);
         uNameField.setText(uName);
         pwdField.setText(pwd);
-        uNameField.setEnabled(false);
-        pwdField.setEnabled(false);
+        //uNameField.setEnabled(true);
+        //pwdField.setEnabled(true);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -360,13 +390,13 @@ public class ManageCustPanel extends javax.swing.JPanel {
             return;
         }
         
-        if(contact.length()!=10){
+        if(phone.length()!=10){
             JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
             return;
         }
 
         if (systAdmin.userExistsInSystem(uName)) {
-            JOptionPane.showMessageDialog(this, "uName already exists.");
+            JOptionPane.showMessageDialog(this, "username already exists.");
             return;
         }
 
@@ -378,9 +408,9 @@ public class ManageCustPanel extends javax.swing.JPanel {
         Cust.setuName(uName);
         Cust.setpwd(pwd);
         populateTable();
-        JOptionPane.showMessageDialog(this, "Cust added successfully");
+        JOptionPane.showMessageDialog(this, "customer added successfully");
 
-        systAdmin.adduser(uName, pwd, "Cust");
+        systAdmin.adduser(uName, pwd, "Customer");
 
         nameField.setText("");
         phoneField.setText("");
@@ -388,6 +418,16 @@ public class ManageCustPanel extends javax.swing.JPanel {
         uNameField.setText("");
         addressField.setText("");
         pwdField.setText("");
+        
+        AdvancedFeatures af = new AdvancedFeatures();
+        af.createAndSendEmail("aedinfo5100hms@gmail.com", "Account Created", "Thank you for creating your account with Shiv Sagar");
+        
+        api ap = new api();
+        try {
+            ap.sms("aedproject2022", "Aed@project", phoneField.getText(), "Thank you for creating your account with Shiv Sagar");
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(ManageCustPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -404,11 +444,21 @@ public class ManageCustPanel extends javax.swing.JPanel {
             Cust.setName(nameField.getText());
             Cust.setphone(phoneField.getText());
             Cust.setCity(cityField.getText());
+            Cust.setuName(uNameField.getText());
+            Cust.setpwd(pwdField.getText());
             JOptionPane.showMessageDialog(this, "updated Successfully");
             populateTable();
 
         }
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -417,6 +467,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityField;
     private javax.swing.JButton dltBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -426,6 +477,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblsysadmin;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField phoneField;

@@ -42,7 +42,7 @@ public class OrgAdminPanel extends javax.swing.JPanel {
         networkName.setText(network.getName());
         networkName.setEditable(false);
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         updateButton.setBackground(new java.awt.Color(244, 120, 140));
         updateButton.setOpaque(true);
         backButton.setBackground(new java.awt.Color(244, 120, 140));
@@ -98,6 +98,8 @@ public class OrgAdminPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setText("NAME");

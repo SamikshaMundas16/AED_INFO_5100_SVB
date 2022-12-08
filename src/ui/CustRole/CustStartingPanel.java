@@ -22,7 +22,7 @@ public class CustStartingPanel extends javax.swing.JPanel {
         this.systAdmin = systAdmin;
         this.callOnCreateMethod1 = callOnCreateMethod1;
         this.callOnCreateMethod2 = callOnCreateMethod2;
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         backBtn.setBackground(new java.awt.Color(244, 120, 140));
         backBtn.setOpaque(true);
         roombookButton.setBackground(new java.awt.Color(244, 120, 140));
@@ -43,7 +43,9 @@ public class CustStartingPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         roombookButton = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
-        manageBooking = new javax.swing.JButton();
+        manageBook = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("CUSTOMER PANEL ");
@@ -59,11 +61,11 @@ public class CustStartingPanel extends javax.swing.JPanel {
         backBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         backBtn.setText("BACK");
 
-        manageBooking.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        manageBooking.setText("MANAGE BOOKING");
-        manageBooking.addActionListener(new java.awt.event.ActionListener() {
+        manageBook.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        manageBook.setText("MANAGE BOOKING");
+        manageBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageBookingActionPerformed(evt);
+                manageBookActionPerformed(evt);
             }
         });
 
@@ -71,35 +73,33 @@ public class CustStartingPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1048, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(backBtn)
+                .addContainerGap(944, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(197, 197, 197)
+                    .addGap(505, 505, 505)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(manageBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(roombookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(backBtn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 574, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(manageBook, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(roombookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
                     .addContainerGap(197, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(717, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(239, 239, 239)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
+                    .addGap(298, 298, 298)
                     .addComponent(jLabel1)
                     .addGap(72, 72, 72)
                     .addComponent(roombookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(49, 49, 49)
-                    .addComponent(manageBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageBook, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(240, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -108,15 +108,16 @@ public class CustStartingPanel extends javax.swing.JPanel {
         callOnCreateMethod1.run();
     }//GEN-LAST:event_roombookButtonActionPerformed
 
-    private void manageBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageBookingActionPerformed
+    private void manageBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageBookActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_manageBookingActionPerformed
+        callOnCreateMethod2.run();
+    }//GEN-LAST:event_manageBookActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton manageBooking;
+    private javax.swing.JButton manageBook;
     private javax.swing.JButton roombookButton;
     // End of variables declaration//GEN-END:variables
 }

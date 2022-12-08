@@ -40,17 +40,11 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
         this.network = network;
         networkName.setText(network.getName());
         networkName.setEditable(false);
+        
+        setBackground(new java.awt.Color(153,255,255));
 
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
-        dltBtn.setBackground(new java.awt.Color(244, 120, 140));
-        dltBtn.setOpaque(true);
-        addButton.setBackground(new java.awt.Color(244, 120, 140));
-        addButton.setOpaque(true);
-        updateButton.setBackground(new java.awt.Color(244, 120, 140));
-        updateButton.setOpaque(true);
-        backBtn.setBackground(new java.awt.Color(244, 120, 140));
-        backBtn.setOpaque(true);
+        
     }
 
     /**
@@ -81,6 +75,8 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
         dltBtn = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         networkName = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         jTable1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -124,6 +120,12 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
         jLabel3.setText("ORGANIZATION NAME");
 
         orgName.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        orgName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select organisation Name" }));
+        orgName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orgNameActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("NAME");
@@ -157,7 +159,7 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
         jLabel7.setText("MANAGE ORGANIZATION ADMIN FOR RESTAUARNT");
 
         orgCombo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        orgCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Deliveryman" }));
+        orgCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DeliMan" }));
         orgCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orgComboActionPerformed(evt);
@@ -230,7 +232,7 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabel7)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,7 +336,7 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(this, "uName already exists");
+            JOptionPane.showMessageDialog(this, "username already exists");
         }
 
         nameField.setText("");
@@ -363,6 +365,36 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
 
     private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            return;
+        }
+
+        String orgType = (String) model.getValueAt(selectedRowIndex, 1);
+        String OrgName = (String) model.getValueAt(selectedRowIndex, 2);
+        String selectedUser = (String) model.getValueAt(selectedRowIndex, 4);
+        entDir enterpriseDirec = network.getentDir();
+        for (rest res : enterpriseDirec.getListOfrests()) {
+            if (res.findManager(user) != null) {
+                if (res.getListOfDeliManOrg() != null) {
+                    for (DeliManOrg del : res.getListOfDeliManOrg()) {
+                        if (del.getName().equals(OrgName)) {
+                            for (Manager man : del.getListOfManager()) {
+                                if (man.getuName().equals(selectedUser)) {
+                                    del.dltManager(man);
+                                    JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
+                                    populateTable();
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }//GEN-LAST:event_dltBtnActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -409,6 +441,10 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdFieldActionPerformed
 
+    private void orgNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orgNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -445,7 +481,7 @@ public class ManageOrgAdmForRest extends javax.swing.JPanel {
         for (rest rest : enterpriseDirec.getListOfrests()) {
             if (rest.findManager(user) != null) {
                 if (rest.getListOfDeliManOrg() != null) {
-                    row[0] = "DeliMan";
+                    row[0] = "Deliveryman";
                     for (DeliManOrg delivery : rest.getListOfDeliManOrg()) {
                         for (Manager manager : delivery.getListOfManager()) {       //add manager 
                             row[0] = network1.getName();

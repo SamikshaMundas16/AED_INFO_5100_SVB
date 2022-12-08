@@ -44,7 +44,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
         this.network = network;
         networkName.setText(network.getName());
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         dltButton.setBackground(new java.awt.Color(244, 120, 140));
         dltButton.setOpaque(true);
         addButton.setBackground(new java.awt.Color(244, 120, 140));
@@ -84,6 +84,8 @@ public class HOrgAdmin extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         orgName = new javax.swing.JComboBox<>();
         networkName = new javax.swing.JTextField();
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
         addButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         addButton.setText("ADD");

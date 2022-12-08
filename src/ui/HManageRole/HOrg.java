@@ -33,7 +33,7 @@ public class HOrg extends javax.swing.JPanel {
         this.user = user;
         this.type = type;
         this.network = network;
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         cityNameTextField.setText(network.getName());
         cityNameTextField.setEditable(false);
 
@@ -73,6 +73,8 @@ public class HOrg extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         dltBtn = new javax.swing.JButton();
         cityNameTextField = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -163,20 +165,25 @@ public class HOrg extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(backButton)
+                .addContainerGap(954, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(779, 779, 779)
+                    .addComponent(dltBtn)
+                    .addContainerGap(190, Short.MAX_VALUE))
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(83, 83, 83)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(backButton)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(176, 176, 176)
+                            .addGap(259, 259, 259)
                             .addComponent(lblsysadmin))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
+                            .addGap(97, 97, 97)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
+                            .addGap(122, 122, 122)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
@@ -194,26 +201,23 @@ public class HOrg extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(cityNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(779, 779, 779)
-                            .addComponent(dltBtn)
-                            .addGap(24, 24, 24)))
+                                            .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addContainerGap(83, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 789, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(backButton)
+                .addContainerGap(741, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(64, 64, 64)
+                    .addGap(107, 107, 107)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(backButton)
-                            .addGap(14, 14, 14)
                             .addComponent(lblsysadmin)
                             .addGap(55, 55, 55)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -312,7 +316,7 @@ public class HOrg extends javax.swing.JPanel {
             return;
         }
         
-        if(contact.length()!=10){
+        if(phone.length()!=10){
             JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
             return;
         }

@@ -38,7 +38,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
         for (Network network : systAdmin.getListOfNetwork()) {
             networkCombo.addItem(network.getName());
         }
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         dltBtn.setBackground(new java.awt.Color(244, 120, 140));
         dltBtn.setOpaque(true);
         addBtn.setBackground(new java.awt.Color(244, 120, 140));
@@ -96,6 +96,8 @@ public class ManageEntPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         viewBtn = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         lblsysadmin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblsysadmin.setText("MANAGE ENTERPRISES");
@@ -330,7 +332,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                     enterpriseToUpdate = list;
                 }
             }
-        } else if (enterpriseType1.equals("Business Event") && enterpriseDirec != null) {
+        } else if (enterpriseType1.equals("Restaurant") && enterpriseDirec != null) {
             for (rest list : enterpriseDirec.getListOfrests()) {
                 if (list.getName().equals(enterpriseName)) {           //if enterprise name matches
                     enterpriseToUpdate = list;
@@ -377,7 +379,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                     populateTable();
                 }
             }
-        } else if (enterpriseType.equals("rest") && enterpriseDirec.getListOfrests() != null) {
+        } else if (enterpriseType.equals("Restaurant") && enterpriseDirec.getListOfrests() != null) {
             for (rest res : enterpriseDirec.getListOfrests()) {
                 if (res.getName().equals(enterpriseName)) {
                     enterpriseDirec.dltEnterpriserest(res);
@@ -429,17 +431,18 @@ public class ManageEntPanel extends javax.swing.JPanel {
             return;
         }
         
-        if(contact.length()!=10){
+        if(phone.length()!=10){
             JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
             return;
         }
+
 
         entDir enterpriseDirec = network.getentDir();
         if (enterpriseType1.equals("Health Club") && enterpriseDirec != null) {
             enterpriseDirec.addHClub(name, phone);
             JOptionPane.showMessageDialog(this, "Enterprise added successfully");
             return;
-        } else if (enterpriseType1.equals("rest") && enterpriseDirec != null) {
+        } else if (enterpriseType1.equals("Restaurant") && enterpriseDirec != null) {
             enterpriseDirec.addrest(name, phone);
             JOptionPane.showMessageDialog(this, "Enterprise added successfully");
 
@@ -453,9 +456,13 @@ public class ManageEntPanel extends javax.swing.JPanel {
             enterpriseDirec.addHotel(name, phone);
             JOptionPane.showMessageDialog(this, "Enterprise added successfully");
             return;
+        } else {
+            JOptionPane.showMessageDialog(this, String.format("This username '%s' already exists", name));
         }
         nameField.setText("");
         phoneField.setText("");
+        networkType.setSelectedIndex(0);
+        enterpriseType.setSelectedIndex(0);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void networkTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkTypeActionPerformed
@@ -519,7 +526,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
             for (int i = 0; i < restList.size(); i++) {
                 row[0] = networkItem;
                 row[1] = restList.get(i).getName();
-                row[2] = "rest";
+                row[2] = "Restaurant";
                 row[3] = restList.get(i).getphone();
                 Model.addRow(row);
             }

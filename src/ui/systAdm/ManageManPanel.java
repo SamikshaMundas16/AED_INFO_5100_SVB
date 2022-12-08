@@ -35,14 +35,14 @@ public class ManageManPanel extends javax.swing.JPanel {
             networkType.addItem(network.getName());
         }
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
 
-        dltBtn.setBackground(new java.awt.Color(244, 120, 140));
-        dltBtn.setOpaque(true);
+        //dltBtn.setBackground(new java.awt.Color(244, 120, 140));
+        //dltBtn.setOpaque(true);
         addButton.setBackground(new java.awt.Color(244, 120, 140));
         addButton.setOpaque(true);
-        updateBtn.setBackground(new java.awt.Color(244, 120, 140));
-        updateBtn.setOpaque(true);
+        //updateBtn.setBackground(new java.awt.Color(244, 120, 140));
+        //updateBtn.setOpaque(true);
         backButton.setBackground(new java.awt.Color(244, 120, 140));
         backButton.setOpaque(true);
     }
@@ -77,7 +77,6 @@ public class ManageManPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
         lblsysadmin = new javax.swing.JLabel();
-        dltBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         addButton = new javax.swing.JButton();
@@ -85,7 +84,6 @@ public class ManageManPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         networkType = new javax.swing.JComboBox<>();
-        updateBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         uNameField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -94,6 +92,8 @@ public class ManageManPanel extends javax.swing.JPanel {
         enterpriseType = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         enterpriseName = new javax.swing.JComboBox<>();
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
         backButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         backButton.setText("BACK");
@@ -105,14 +105,6 @@ public class ManageManPanel extends javax.swing.JPanel {
 
         lblsysadmin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblsysadmin.setText("MANAGE ENTERPRISE MANAGERS");
-
-        dltBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        dltBtn.setText("DELETE");
-        dltBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dltBtnActionPerformed(evt);
-            }
-        });
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -167,14 +159,6 @@ public class ManageManPanel extends javax.swing.JPanel {
             }
         });
 
-        updateBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        updateBtn.setText("UPDATE");
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("MANAGER NAME");
 
@@ -216,34 +200,27 @@ public class ManageManPanel extends javax.swing.JPanel {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(280, 280, 280)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(dltBtn)
-                                    .addGap(22, 22, 22))
+                                    .addGap(130, 130, 130)
+                                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(130, 130, 130)
-                                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(73, 73, 73)
-                                            .addComponent(updateBtn))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(34, 34, 34)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(enterpriseType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(nameField)
-                                                .addComponent(uNameField)
-                                                .addComponent(pwdField)
-                                                .addComponent(networkType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(enterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGap(223, 223, 223)))))
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(34, 34, 34)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(enterpriseType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(nameField)
+                                        .addComponent(uNameField)
+                                        .addComponent(pwdField)
+                                        .addComponent(networkType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(enterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(250, 250, 250)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(lblsysadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -258,9 +235,7 @@ public class ManageManPanel extends javax.swing.JPanel {
                 .addComponent(lblsysadmin)
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dltBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(networkType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -286,9 +261,7 @@ public class ManageManPanel extends javax.swing.JPanel {
                     .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83))
         );
 
@@ -328,7 +301,7 @@ public class ManageManPanel extends javax.swing.JPanel {
             for (BussEvent event : enterpriseDirec.getListOfEvents()) {
                 enterpriseName.addItem(event.getName());
             }
-        } else if (enterpriseType1.equals("rest")) {
+        } else if (enterpriseType1.equals("Restaurant")) {
             for (rest res : enterpriseDirec.getListOfrests()) {
                 enterpriseName.addItem(res.getName());
             }
@@ -340,84 +313,6 @@ public class ManageManPanel extends javax.swing.JPanel {
             return;
         }
     }//GEN-LAST:event_enterpriseTypeActionPerformed
-
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-
-        if (jTable1.getSelectedRowCount() != 1) {
-            JOptionPane.showMessageDialog(this, "Please select a row to update.");
-        }
-
-        String networkName = networkType.getSelectedItem().toString();
-        String enterpriseType1 = enterpriseType.getSelectedItem().toString();
-        String enterpriseName1 = enterpriseName.getSelectedItem().toString();
-        String manageruName = uNameField.getText();
-
-        String pwd = pwdField.getText();
-        String name = nameField.getText();
-
-        Network network = systAdmin.findNetwork(networkName);  //finiding network
-        entDir enterpriseDirec = network.getentDir();
-
-        if (enterpriseType1.equals("Health Club")) {
-            HClub HClubName1 = enterpriseDirec.findHClub(enterpriseName1);
-            for (Manager man : HClubName1.getListOfManager()) {
-                if (man.getuName().equals(manageruName)) {
-
-                    man.setName(name);
-                    man.setpwd(pwd);
-
-                    systAdmin.updateuser(manageruName, pwd);
-                    populateTable();
-                    JOptionPane.showMessageDialog(this, " Updated successfully ");
-                    return;
-                }
-            }
-        } else if (enterpriseType1.equals("Business Event")) {
-            BussEvent event1 = enterpriseDirec.findEvent(enterpriseName1);
-            for (Manager man : event1.getListOfManager()) {
-                if (man.getuName().equals(manageruName)) {
-
-                    man.setName(name);
-                    man.setpwd(pwd);
-
-                    systAdmin.updateuser(manageruName, pwd);
-                    populateTable();
-                    JOptionPane.showMessageDialog(this, " Updated successfully ");
-                    return;
-                }
-            }
-        } else if (enterpriseType1.equals("Hotel")) {
-            Hotel hotel = enterpriseDirec.findHotel(enterpriseName1);
-            for (Manager man : hotel.getListOfManager()) {
-                if (man.getuName().equals(manageruName)) {
-
-                    man.setName(name);
-                    man.setpwd(pwd);
-
-                    systAdmin.updateuser(manageruName, pwd);
-                    populateTable();
-                    JOptionPane.showMessageDialog(this, " Updated successfully ");
-                    return;
-                }
-            }
-        } else if (enterpriseType1.equals("rest")) {
-            rest res = enterpriseDirec.findrest(enterpriseName1);
-            for (Manager man : res.getListOfManager()) {
-                if (man.getuName().equals(manageruName)) {
-                    man.setName(name);
-                    man.setpwd(pwd);
-
-                    systAdmin.updateuser(manageruName, pwd);
-
-                    populateTable();
-                    JOptionPane.showMessageDialog(this, "Updated successfully ");
-                    return;
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid enterprise [" + enterpriseType1 + "]");
-        }
-    }//GEN-LAST:event_updateBtnActionPerformed
 
     private void networkTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkTypeActionPerformed
 
@@ -441,6 +336,10 @@ public class ManageManPanel extends javax.swing.JPanel {
             || !Validator.validatepwd(this, pwd)) {
             return;
         }
+        
+     
+        
+
 
         if (!systAdmin.userExistsInSystem(uName)) {
             Network network = systAdmin.findNetwork(networkName);  //finiding network
@@ -457,6 +356,7 @@ public class ManageManPanel extends javax.swing.JPanel {
                 row[4] = uName;
                 row[5] = pwd;
                 Model.addRow(row);
+                JOptionPane.showMessageDialog(this, "Manager added successfully");
                 return;
             } else if (enterpriseType1.equals("Business Event") && enterpriseDirec != null) {
                 BussEvent event1 = enterpriseDirec.findEvent(enterpriseName1);
@@ -469,18 +369,22 @@ public class ManageManPanel extends javax.swing.JPanel {
                 row[4] = uName;
                 row[5] = pwd;
                 Model.addRow(row);
-            } else if (enterpriseType1.equals("rest") && enterpriseDirec != null) {
+                JOptionPane.showMessageDialog(this, "Manager added successfully");
+                return;
+            } else if (enterpriseType1.equals("Restaurant") && enterpriseDirec != null) {
                 rest res1 = enterpriseDirec.findrest(enterpriseName1);
                 res1.addManager(uName, uName, pwd);
-                systAdmin.adduser(uName, pwd, "rest");
+                systAdmin.adduser(uName, pwd, "Restaurant");
 
                 row[0] = networkName;
-                row[1] = "rest";
+                row[1] = "Restaurant";
                 row[2] = enterpriseName1;
                 row[3] = name;
                 row[4] = uName;
                 row[5] = pwd;
                 Model.addRow(row);
+                JOptionPane.showMessageDialog(this, "Manager added successfully");
+                return;
             } else if (enterpriseType1.equals("Hotel") && enterpriseDirec != null) {
                 Hotel hotel1 = enterpriseDirec.findHotel(enterpriseName1);
                 hotel1.addManager(name, uName, pwd);
@@ -492,11 +396,13 @@ public class ManageManPanel extends javax.swing.JPanel {
                 row[4] = uName;
                 row[5] = pwd;
                 Model.addRow(row);
+                JOptionPane.showMessageDialog(this, "Manager added successfully");
+                return;
             }
         } else {
-            JOptionPane.showMessageDialog(this, String.format("This uName '%s' already exists", uName));
+            JOptionPane.showMessageDialog(this, String.format("This username '%s' already exists", uName));
         }
-        JOptionPane.showMessageDialog(this, "Manager added successfully");
+        
         nameField.setText("");
         uNameField.setText("");
         pwdField.setText("");
@@ -529,56 +435,6 @@ public class ManageManPanel extends javax.swing.JPanel {
         enterpriseType.setSelectedItem(eType);
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
-        // TODO add your handling code here:
-        
-        int selectedRowIndex = jTable1.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to dlt");
-            return;
-        }
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        String networkName = (String) ModelNew.getValueAt(selectedRowIndex, 0);
-        String enterpriseType = (String) ModelNew.getValueAt(selectedRowIndex, 1);
-        String enterpriseName = (String) ModelNew.getValueAt(selectedRowIndex, 2);
-        String selecteduser = (String) ModelNew.getValueAt(selectedRowIndex, 4);
-        Network network = systAdmin.findNetwork(networkName);
-        entDir enterpriseDirec = network.getentDir();
-        if (enterpriseType.equals("Business Event")) {
-            for (BussEvent event : enterpriseDirec.getListOfEvents()) {
-                for (Manager man : event.getListOfManager()) {
-                    if (man.getName().equals(selecteduser)) {
-                        event.dltManager(man);
-                        JOptionPane.showMessageDialog(this, "dltd successfully");
-                        populateTable();
-                    }
-                }
-            }
-        } else if (enterpriseType.equals("rest")) {
-            for (rest res : enterpriseDirec.getListOfrests()) {
-                for (Manager man : res.getListOfManager()) {
-                    if (man.getName().equals(selecteduser)) {
-                        res.dltManager(man);
-                        JOptionPane.showMessageDialog(this, "dltd successfully");
-                        populateTable();
-                    }
-                }
-            }
-        } else if (enterpriseType.equals("Hotel")) {
-            for (Hotel hotel : enterpriseDirec.getListOfHotel()) {
-                for (Manager man : hotel.getListOfManager()) {
-                    if (man.getName().equals(selecteduser)) {
-                        hotel.dltManager(man);
-                        JOptionPane.showMessageDialog(this, "dltd successfully");
-                        populateTable();
-                    }
-                }
-            }
-        }
-                                         
-
-    }//GEN-LAST:event_dltBtnActionPerformed
-
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
@@ -587,7 +443,6 @@ public class ManageManPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton dltBtn;
     private javax.swing.JComboBox<String> enterpriseName;
     private javax.swing.JComboBox<String> enterpriseType;
     private javax.swing.JLabel jLabel1;
@@ -604,7 +459,6 @@ public class ManageManPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> networkType;
     private javax.swing.JTextField pwdField;
     private javax.swing.JTextField uNameField;
-    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {

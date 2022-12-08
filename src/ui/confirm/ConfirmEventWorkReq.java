@@ -22,27 +22,29 @@ public class ConfirmEventWorkReq extends javax.swing.JPanel {
         this.type = type;
         lblbookservices.setText(lblbookservices.getText() + type.toUpperCase() + " Org");
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Genecostd Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         lblbookservices = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
         lblbookservices.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblbookservices.setText("ASSIGNED WORK REQUESTS FOR ");
+        lblbookservices.setText("ASSIGNED WORK REQUESTS ");
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable1.setModelNew(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cust ID", "Book ID", "HOTEL NAME", "DATE", "STATUS"
+                "CUSTOMER ID", "BOOKING ID", "HOTEL NAME", "DATE", "STATUS"
             }
         ) {
             boolean[] canEdit = new boolean [] {

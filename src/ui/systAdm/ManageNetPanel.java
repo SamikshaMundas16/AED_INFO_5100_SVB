@@ -30,7 +30,7 @@ public class ManageNetPanel extends javax.swing.JPanel {
         this.systAdmin = systAdmin;
         initComponents();
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
           backButton.setBackground(new java.awt.Color(244, 120, 140));
          backButton.setOpaque(true);
          addButton.setBackground(new java.awt.Color(244, 120, 140));
@@ -54,6 +54,8 @@ public class ManageNetPanel extends javax.swing.JPanel {
         lblsysadmin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
         backButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         backButton.setText("BACK");

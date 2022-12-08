@@ -36,7 +36,7 @@ public class BookRoomServPanel extends javax.swing.JPanel {
         for (RoomType type : RoomType.values()) {
             roomtypeComboBox.addItem(type);
         }
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         backBtn.setBackground(new java.awt.Color(244, 120, 140));
         backBtn.setOpaque(true);
         priceBtn.setBackground(new java.awt.Color(244, 120, 140));
@@ -65,13 +65,15 @@ public class BookRoomServPanel extends javax.swing.JPanel {
         lblbookservices = new javax.swing.JLabel();
         peopleField = new javax.swing.JTextField();
         roomField = new javax.swing.JTextField();
-        checkin = new com.toedter.calendar.JDateChooser();
+        intime = new com.toedter.calendar.JDateChooser();
         hotelCombo = new javax.swing.JComboBox<>();
-        checkout = new com.toedter.calendar.JDateChooser();
+        outtime = new com.toedter.calendar.JDateChooser();
         cityCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         roomtypeComboBox = new javax.swing.JComboBox<>();
         priceBtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         backBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         backBtn.setText("BACK");
@@ -138,17 +140,18 @@ public class BookRoomServPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1380, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(backBtn)
+                .addContainerGap(1266, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(282, 282, 282)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(backBtn)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(308, 308, 308)
+                            .addGap(590, 590, 590)
                             .addComponent(lblbookservices))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(127, 127, 127)
+                            .addGap(409, 409, 409)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbldate)
                                 .addGroup(layout.createSequentialGroup()
@@ -171,37 +174,38 @@ public class BookRoomServPanel extends javax.swing.JPanel {
                                             .addGap(4, 4, 4)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(checkin, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(intime, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(30, 30, 30)
-                                                    .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(outtime, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addComponent(roomField, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addComponent(hotelCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(roomtypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(peopleField, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(305, 305, 305)
+                            .addGap(587, 587, 587)
                             .addComponent(bookRoomBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(283, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 829, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(771, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(89, 89, 89)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(4, 4, 4)
+                            .addGap(131, 131, 131)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblbookservices)
                                     .addGap(45, 45, 45)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(lbldate)
-                                        .addComponent(checkin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(intime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(outtime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(38, 38, 38)
                                     .addComponent(lblcity))
                                 .addComponent(cityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -227,7 +231,7 @@ public class BookRoomServPanel extends javax.swing.JPanel {
                                 .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(88, 88, 88))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addContainerGap(694, Short.MAX_VALUE)
                             .addComponent(bookRoomBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(90, 90, 90)))
         );
@@ -308,16 +312,16 @@ public class BookRoomServPanel extends javax.swing.JPanel {
     private javax.swing.JButton backBtn;
     private javax.swing.JButton bookRoomBtn;
     private javax.swing.JLabel btnnoofpeople;
-    private com.toedter.calendar.JDateChooser checkin;
-    private com.toedter.calendar.JDateChooser checkout;
     private javax.swing.JComboBox<String> cityCombo;
     private javax.swing.JComboBox<String> hotelCombo;
+    private com.toedter.calendar.JDateChooser intime;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblbookservices;
     private javax.swing.JLabel lblcity;
     private javax.swing.JLabel lbldate;
     private javax.swing.JLabel lblhotel;
     private javax.swing.JLabel lblroom;
+    private com.toedter.calendar.JDateChooser outtime;
     private javax.swing.JTextField peopleField;
     private javax.swing.JButton priceBtn;
     private javax.swing.JTextField priceField;

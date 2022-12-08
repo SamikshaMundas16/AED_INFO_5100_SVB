@@ -25,7 +25,7 @@ public class systAdmJPanel extends javax.swing.JPanel {
         this.callOnCreateMethod2 = callOnCreateMethod2;
         this.callOnCreateMethod3 = callOnCreateMethod3;
         this.callOnCreateMethod4 = callOnCreateMethod4;
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
 
         btnmanagenetworks.setBackground(new java.awt.Color(244, 120, 140));
         btnmanagenetworks.setOpaque(true);
@@ -52,6 +52,8 @@ public class systAdmJPanel extends javax.swing.JPanel {
         btnmanageCusts = new javax.swing.JButton();
         lblsysadmin = new javax.swing.JLabel();
         btnmanagemanagers = new javax.swing.JButton();
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
         btnmanagenetworks.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnmanagenetworks.setText("MANAGE NETWORKS");
@@ -154,6 +156,7 @@ public class systAdmJPanel extends javax.swing.JPanel {
 
     private void btnmanageCustsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanageCustsActionPerformed
         // TODO add your handling code here:
+        callOnCreateMethod4.run();
     }//GEN-LAST:event_btnmanageCustsActionPerformed
 
     private void btnmanagemanagersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagemanagersActionPerformed

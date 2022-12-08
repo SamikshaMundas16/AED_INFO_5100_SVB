@@ -41,7 +41,7 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
         this.BussEvent = BussEvent;
         populateComboBox();
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         backBtn.setBackground(new java.awt.Color(244, 120, 140));
         backBtn.setOpaque(true);
        confirmBtn.setBackground(new java.awt.Color(244, 120, 140));
@@ -65,13 +65,15 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         confirmBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        decorOrg = new javax.swing.JComboBox<>();
+        decorOrg = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        cateringOrg = new javax.swing.JComboBox<>();
+        cateringOrg = new javax.swing.JComboBox();
         backBtn = new javax.swing.JButton();
-        photographyOrg = new javax.swing.JComboBox<>();
+        photographyOrg = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         denyButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         jLabel4.setText("SELECT A PHOTOGRAPHY ORG");
 
@@ -378,9 +380,9 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JComboBox<CateringService> cateringOrg;
+    private javax.swing.JComboBox cateringOrg;
     private javax.swing.JButton confirmBtn;
-    private javax.swing.JComboBox<model.DecorServices> decorOrg;
+    private javax.swing.JComboBox decorOrg;
     private javax.swing.JButton denyButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -388,6 +390,6 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<model.PhotographyService> photographyOrg;
+    private javax.swing.JComboBox photographyOrg;
     // End of variables declaration//GEN-END:variables
 }

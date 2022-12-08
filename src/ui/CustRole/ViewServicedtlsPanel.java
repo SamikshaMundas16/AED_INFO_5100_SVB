@@ -27,11 +27,9 @@ public class ViewServicedtlsPanel extends javax.swing.JPanel {
         this.uName = uName;
         this.Book = Book;
         populatePanel();
-        setBackground(new java.awt.Color(255, 204, 204));
-        backBtn.setBackground(new java.awt.Color(244, 120, 140));
-        backBtn.setOpaque(true);
-        Bookdtls.setColumns(19);
-        Bookdtls.setRows(7);
+        setBackground(new java.awt.Color(153,255,255));
+        
+        
     }
 
     /**
@@ -45,17 +43,19 @@ public class ViewServicedtlsPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        bookingDetails = new javax.swing.JTextArea();
+        Bookdtls = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        checkout = new javax.swing.JTextField();
+        outtime = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
-        checkin = new javax.swing.JTextField();
+        intime = new javax.swing.JTextField();
 
-        bookingDetails.setColumns(20);
-        bookingDetails.setRows(5);
-        jScrollPane1.setViewportView(bookingDetails);
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+
+        Bookdtls.setColumns(20);
+        Bookdtls.setRows(5);
+        jScrollPane1.setViewportView(Bookdtls);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("CHECK-IN ");
@@ -63,7 +63,7 @@ public class ViewServicedtlsPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setText("CHECK-OUT");
 
-        checkout.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        outtime.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel3.setText("VIEW ORDER DETAILS");
@@ -76,7 +76,7 @@ public class ViewServicedtlsPanel extends javax.swing.JPanel {
             }
         });
 
-        checkin.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        intime.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,8 +95,8 @@ public class ViewServicedtlsPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkin, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(intime, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outtime, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
@@ -112,12 +112,12 @@ public class ViewServicedtlsPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(checkin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(intime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(checkout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(outtime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -151,15 +151,15 @@ public class ViewServicedtlsPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Bookdtls;
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextArea bookingDetails;
-    private javax.swing.JTextField checkin;
-    private javax.swing.JTextField checkout;
+    private javax.swing.JTextField intime;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField outtime;
     // End of variables declaration//GEN-END:variables
 
     private void populatePanel() {

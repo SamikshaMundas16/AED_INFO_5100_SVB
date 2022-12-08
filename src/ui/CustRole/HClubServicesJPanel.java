@@ -11,6 +11,7 @@ import ModelNew.HClub;
 import ModelNew.systAdmin;
 import ModelNew.services.HClubService;
 import ui.main.DateUtils;
+
 /**
  *
  * @author DELL
@@ -28,15 +29,12 @@ public class HClubServicesJPanel extends javax.swing.JPanel {
         this.callOnCreateMethod1 = callOnCreateMethod1;
         this.uName = uName;
         this.Book = Book;
+        setBackground(new java.awt.Color(153,255,255));
 
         for (HClub HClub : Book.getNetwork().getentDir().getListOfHClub()) {
             HClubCombo.addItem(HClub);
         }
-        setBackground(new java.awt.Color(255, 204, 204));
-        backBtn.setBackground(new java.awt.Color(244, 120, 140));
-        backBtn.setOpaque(true);
-        addServiceBtn.setBackground(new java.awt.Color(244, 120, 140));
-        addServiceBtn.setOpaque(true);
+        
     }
 
     /**
@@ -60,7 +58,9 @@ public class HClubServicesJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         dateField = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        healthClubCombo = new javax.swing.JComboBox<>();
+        HClubCombo = new javax.swing.JComboBox();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         lblbookservices.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblbookservices.setText("HEALTH CLUB SERVICES");
@@ -119,7 +119,7 @@ public class HClubServicesJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Health Club");
 
-        healthClubCombo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        HClubCombo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -151,7 +151,7 @@ public class HClubServicesJPanel extends javax.swing.JPanel {
                                 .addComponent(dateField, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel5)
-                                .addComponent(healthClubCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(HClubCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(349, 349, 349)
                             .addComponent(addServiceBtn)))
@@ -175,7 +175,7 @@ public class HClubServicesJPanel extends javax.swing.JPanel {
                     .addGap(58, 58, 58)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
-                        .addComponent(healthClubCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(HClubCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(66, 66, 66)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(yogaBtn)
@@ -236,30 +236,30 @@ public class HClubServicesJPanel extends javax.swing.JPanel {
             return;
         }
 
-        HClubService HClubService = new HClubService(HClub, date);
+        HClubService hClubService = new HClubService(HClub, date);
         if (yogaBtnSelected) {
-            HClubService.addService(HClubService.HClubServiceType.TRAINER);
+            hClubService.addService(HClubService.HClubServiceType.TRAINER);
         }
 
         if (massageRadioBtnSelected) {
-            HClubService.addService(HClubService.HClubServiceType.Therapy);
+            hClubService.addService(HClubService.HClubServiceType.Therapy);
         }
 
         if (medicalRadioBtnSelected) {
-            HClubService.addService(HClubService.HClubServiceType.Phy);
+            hClubService.addService(HClubService.HClubServiceType.Phy);
         }
 
-        Book.addService(HClubService);
+        Book.addService(hClubService);
         JOptionPane.showMessageDialog(this, "Your health club appointment is booked for " + date);
         callOnCreateMethod1.accept(Book);
     }//GEN-LAST:event_addServiceBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox HClubCombo;
     private javax.swing.JButton addServiceBtn;
     private javax.swing.JButton backBtn;
     private com.toedter.calendar.JDateChooser dateField;
-    private javax.swing.JComboBox<HealthClub> healthClubCombo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

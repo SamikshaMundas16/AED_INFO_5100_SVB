@@ -73,8 +73,9 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         this.systAdmin = DbUtils.getInstance().retrieveSystem();
         logoutBtn.setEnabled(false);
-        ControlPanel.setBackground(new java.awt.Color(0,0, 128);
-        WorkArea.setBackground(new java.awt.Color(0 ,0, 220):
+        setBackground(new java.awt.Color(153,255,255));
+        ControlPanel.setBackground(new java.awt.Color(0,102,102));
+        WorkArea.setBackground(new java.awt.Color(204,255,255));
     }
 
     /**
@@ -96,9 +97,16 @@ public class MainJFrame extends javax.swing.JFrame {
         pwdField = new javax.swing.JPasswordField();
         WorkArea = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        ControlPanel.setBackground(new java.awt.Color(0, 102, 102));
         ControlPanel.setPreferredSize(new java.awt.Dimension(138, 813));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -165,18 +173,47 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         jSplitPane.setLeftComponent(ControlPanel);
 
+        WorkArea.setBackground(new java.awt.Color(204, 255, 255));
         WorkArea.setLayout(null);
 
         jLabel3.setBackground(new java.awt.Color(0, 255, 255));
         jLabel3.setFont(new java.awt.Font("Algerian", 1, 48)); // NOI18N
-        jLabel3.setText("WELCOME TO Shiv sagar");
+        jLabel3.setText("WELCOME TO FEEL-HOME SERVICES");
         WorkArea.add(jLabel3);
-        jLabel3.setBounds(85, 62, 640, 64);
+        jLabel3.setBounds(85, 62, 869, 64);
+
+        jLabel5.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jLabel5.setText("CONTACT US");
+        WorkArea.add(jLabel5);
+        jLabel5.setBounds(480, 520, 125, 24);
+
+        jLabel14.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        jLabel14.setText("+1 234-638-9566");
+        WorkArea.add(jLabel14);
+        jLabel14.setBounds(480, 550, 136, 24);
+
+        jLabel13.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
+        jLabel13.setText("aedinfo5100@gmail.com");
+        WorkArea.add(jLabel13);
+        jLabel13.setBounds(460, 580, 210, 40);
+
+        jLabel12.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
+        jLabel12.setText("HAVE A WONDERFULL TIME WITH US");
+        WorkArea.add(jLabel12);
+        jLabel12.setBounds(290, 640, 543, 48);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Samikshan\\OneDrive\\Desktop\\SS3.png")); // NOI18N
+        WorkArea.add(jLabel15);
+        jLabel15.setBounds(430, 140, 220, 100);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Samikshan\\OneDrive\\Desktop\\SS2.png")); // NOI18N
+        WorkArea.add(jLabel4);
+        jLabel4.setBounds(430, 260, 220, 210);
 
         jSplitPane.setRightComponent(WorkArea);
 
@@ -195,7 +232,6 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-
         this.uName = uNameField.getText();
         this.pwd = pwdField.getText();
 
@@ -204,70 +240,81 @@ public class MainJFrame extends javax.swing.JFrame {
 
             switch (type) {
                 case "admin":
-                    systAdmJPanel systAdm = new systAdmJPanel(systAdmin, this::renderNetworkPanel, this::renderEnterprisePanel, this::renderManagerPanel, this::renderCustPanel);
-                    jSplitPane.setRightComponent(systAdm);
-                    break;
+                systAdmJPanel systAdm = new systAdmJPanel(systAdmin, this::renderNetworkPanel, this::renderEnterprisePanel, this::renderManagerPanel, this::renderCustPanel);
+                jSplitPane.setRightComponent(systAdm);
+                break;
 
+                case "customer":
+                renderCust(uName);
+                break;
+                
+                case "Customer":
+                renderCust(uName);
+                break;
+                
+                case "cust":
+                renderCust(uName);
+                break;
+                
                 case "Cust":
-                    renderCust(uName);
-                    break;
+                renderCust(uName);
+                break;
 
                 case "Health Club":
-                    renderHClubManager(uName);
-                    break;
+                renderHClubManager(uName);
+                break;
 
-                case "rest":
-                    renderrestManager(uName);
-                    break;
+                case "Restaurant":
+                renderrestManager(uName);
+                break;
 
                 case "Hotel":
-                    HManagerPanel();
-                    break;
+                HManagerPanel();
+                break;
 
                 case "Business Event":
-                    EvtManagerPanel();
-                    break;
+                EvtManagerPanel();
+                break;
                 case "Catering":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "Decor":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "Photography":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "DeliMan":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "Laundary":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "Transportation":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "Phy":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "Therapy":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 case "Trainer":
-                    confirmWorkRequestForEvent();
-                    break;
+                confirmWorkRequestForEvent();
+                break;
                 default:
-                    JOptionPane.showMessageDialog(this, "Type not supported.");
-                    return;
+                JOptionPane.showMessageDialog(this, "Type not supported.");
+                return;
             }
+           
             uNameField.setText("");
             pwdField.setText("");
             loginBtn.setEnabled(false);
             logoutBtn.setEnabled(true);
             JOptionPane.showMessageDialog(this, "Login Successful");
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid Username or password");
+            JOptionPane.showMessageDialog(this, "Invalid uName or pwd");
         }
-                                         
-                    
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
@@ -280,7 +327,7 @@ public class MainJFrame extends javax.swing.JFrame {
         uNameField.setText("");
         pwdField.setText("");
         System.out.println("Logout success.");
-        
+        JOptionPane.showMessageDialog(this, "Logout Successful");
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     
@@ -347,8 +394,14 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel ControlPanel;
     private javax.swing.JPanel WorkArea;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSplitPane jSplitPane;
     private javax.swing.JButton loginBtn;
     private javax.swing.JButton logoutBtn;
@@ -461,8 +514,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void ViewTask() {   //view task for health club
         String type = systAdmin.finduserType(uName);
         HClub HClub = (HClub) finduserHClub();
-        ViewTask viewTask = new ViewTask(systAdmin, this::HClubManagerPanel, uName, type, HClub
-        );
+        ViewTask viewTask = new ViewTask(systAdmin, this::HClubManagerPanel, uName, type, HClub);
         jSplitPane.setRightComponent(viewTask);
     }
 

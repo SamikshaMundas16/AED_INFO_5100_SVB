@@ -22,7 +22,7 @@ public class EvtManagerPanel extends javax.swing.JPanel {
         this.callOnCreateMethod1 = callOnCreateMethod1;
         this.callOnCreateMethod2 = callOnCreateMethod2;
         this.callOnCreateMethod3 = callOnCreateMethod3;
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         viewTask.setBackground(new java.awt.Color(244, 120, 140));
         viewTask.setOpaque(true);
         orgBtn.setBackground(new java.awt.Color(244, 120, 140));
@@ -50,6 +50,8 @@ public class EvtManagerPanel extends javax.swing.JPanel {
         orgBtn = new javax.swing.JButton();
         viewTask = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         orgadmin.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         orgadmin.setText("MANAGE ORGANISATION ADMIN");

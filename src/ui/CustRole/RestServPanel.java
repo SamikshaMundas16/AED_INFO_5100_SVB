@@ -33,7 +33,7 @@ public class RestServPanel extends javax.swing.JPanel {
         for (rest res : Book.getNetwork().getentDir().getListOfrests()) {
             restCombo.addItem(res);
         }
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         backBtn.setBackground(new java.awt.Color(244, 120, 140));
         backBtn.setOpaque(true);
         placeOrder.setBackground(new java.awt.Color(244, 120, 140));
@@ -49,18 +49,20 @@ public class RestServPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuItem = new javax.swing.JComboBox<>();
+        MenuContents = new javax.swing.JComboBox();
         backBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         placeOrder = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        restaurantCombo = new javax.swing.JComboBox<>();
+        restCombo = new javax.swing.JComboBox();
 
-        menuItem.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        menuItem.addActionListener(new java.awt.event.ActionListener() {
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        MenuContents.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        MenuContents.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemActionPerformed(evt);
+                MenuContentsActionPerformed(evt);
             }
         });
 
@@ -89,10 +91,10 @@ public class RestServPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("SELECT A RESTAURANT NAME ");
 
-        restaurantCombo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        restaurantCombo.addActionListener(new java.awt.event.ActionListener() {
+        restCombo.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        restCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                restaurantComboActionPerformed(evt);
+                restComboActionPerformed(evt);
             }
         });
 
@@ -100,61 +102,58 @@ public class RestServPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 804, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(backBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MenuContents, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(restCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(116, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel4))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(restaurantCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(menuItem, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backBtn)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(247, 247, 247)
-                            .addComponent(placeOrder)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(50, 50, 50)))
+                    .addGap(297, 297, 297)
+                    .addComponent(placeOrder)
+                    .addGap(343, 343, 343))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(101, 101, 101)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 752, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(backBtn)
+                .addGap(279, 279, 279)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(restCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MenuContents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(293, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(159, 159, 159)
-                    .addComponent(backBtn)
-                    .addGap(39, 39, 39)
+                    .addGap(229, 229, 229)
                     .addComponent(jLabel1)
-                    .addGap(99, 99, 99)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(restaurantCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(66, 66, 66)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(menuItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(57, 57, 57)
+                    .addGap(274, 274, 274)
                     .addComponent(placeOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(159, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemActionPerformed
+    private void MenuContentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuContentsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuItemActionPerformed
+    }//GEN-LAST:event_MenuContentsActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         callOnCreateMethod1.accept(Book);
@@ -172,18 +171,25 @@ public class RestServPanel extends javax.swing.JPanel {
         callOnCreateMethod1.accept(Book);
     }//GEN-LAST:event_placeOrderActionPerformed
 
-    private void restaurantComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restaurantComboActionPerformed
+    private void restComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restComboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_restaurantComboActionPerformed
+        MenuContents.removeAllItems();
+        rest rest = (rest) restCombo.getSelectedItem();
+        if (rest != null) {
+            for (MenuContents item : rest.getListOfItem()) {
+                MenuContents.addItem(item);
+            }
+        }
+    }//GEN-LAST:event_restComboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox MenuContents;
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JComboBox<MenuItem> menuItem;
     private javax.swing.JButton placeOrder;
-    private javax.swing.JComboBox<Restaurant> restaurantCombo;
+    private javax.swing.JComboBox restCombo;
     // End of variables declaration//GEN-END:variables
 }

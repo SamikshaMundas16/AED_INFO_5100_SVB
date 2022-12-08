@@ -35,7 +35,7 @@ public class ManageOrgPanel extends javax.swing.JPanel {
         cityNameTextField.setText(network.getName());
         cityNameTextField.setEditable(false);
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
 
         dltBtn.setBackground(new java.awt.Color(244, 120, 140));
         dltBtn.setOpaque(true);
@@ -78,6 +78,8 @@ public class ManageOrgPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         orgCombo = new javax.swing.JComboBox<>();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         backButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         backButton.setText("BACK");
@@ -171,10 +173,6 @@ public class ManageOrgPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dltBtn)
-                .addGap(118, 118, 118))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -207,7 +205,10 @@ public class ManageOrgPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 998, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(523, 523, 523)
+                        .addComponent(dltBtn)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -252,18 +253,20 @@ public class ManageOrgPanel extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         String networkName = network.getName();  //find the network
         String name = nameField.getText();
+        String phone = phoneField.getText();
+        
 
         if (name == null || name.length() < 2) {
             JOptionPane.showMessageDialog(this, "Org name should be at least 2 characters long.");
             return;
         }
         
-        if(contact.length()!=10){
+        if(phone.length()!=10){
             JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
             return;
         }
 
-        String phone = phoneField.getText();
+        //String phone = phoneField.getText();
         String orgType1 = orgCombo.getSelectedItem().toString();
         entDir enterpriseDirc = network.getentDir();
         List<HClub> HClub = enterpriseDirc.getListOfHClub();

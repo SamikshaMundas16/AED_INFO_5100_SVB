@@ -33,7 +33,7 @@ public class ManageBook extends javax.swing.JPanel {
         this.uName = uName;
 
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(153,255,255));
         backBtn.setBackground(new java.awt.Color(244, 120, 140));
         backBtn.setOpaque(true);
         addServiceBtn.setBackground(new java.awt.Color(244, 120, 140));
@@ -57,6 +57,8 @@ public class ManageBook extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         addServiceBtn = new javax.swing.JButton();
         viewOrder = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("BOOKING DETAILS");
@@ -108,7 +110,10 @@ public class ManageBook extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 889, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(backBtn)
+                .addGap(793, 793, 793))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -118,23 +123,21 @@ public class ManageBook extends javax.swing.JPanel {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addComponent(backBtn))
-                        .addGroup(layout.createSequentialGroup()
                             .addGap(167, 167, 167)
                             .addComponent(addServiceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(67, 67, 67)
-                            .addComponent(viewOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(viewOrder)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(770, 770, 770))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(187, 187, 187)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(235, 235, 235)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(59, 59, 59)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +161,7 @@ public class ManageBook extends javax.swing.JPanel {
         }
 
         DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
-        String BookId = (String) ModelNew.getValueAt(selectedRowIndex, 1);
+        String BookId = (String) Model.getValueAt(selectedRowIndex, 1);
 
         System.out.println(BookId + " is selected");
 
@@ -181,7 +184,7 @@ public class ManageBook extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a Book to view its dtls.");
             return;
         }
-        String BookId = (String) ModelNew.getValueAt(selectedRowIndex, 1);
+        String BookId = (String) Model.getValueAt(selectedRowIndex, 1);
 
         System.out.println(BookId + " is selected");
 
