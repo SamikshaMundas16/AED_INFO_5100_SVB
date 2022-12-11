@@ -5,7 +5,7 @@
 package ui.systAdm;
 
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.BussEvent;
 import ModelNew.Enterprise;
 import ModelNew.entDir;
@@ -157,6 +157,15 @@ public class ManageNetPanel extends javax.swing.JPanel {
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    public boolean validateName() {
+        if (nameField.getText().matches("[a-zA-Z]{2,19}")) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid input: name should contain only alphabets");
+            return false;
+        }
+    }
+    
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         String name = nameField.getText();
         if (validateName()) {
@@ -180,12 +189,12 @@ public class ManageNetPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTabel.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTabel.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         for (Network network : systAdmin.getListOfNetwork()) {        //populate network
             row[0] = network.getName();
-            ModelNew.addRow(row);
+            Model.addRow(row);
         }
     }
 

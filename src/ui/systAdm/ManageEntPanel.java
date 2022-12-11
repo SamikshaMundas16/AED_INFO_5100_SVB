@@ -6,7 +6,7 @@ package ui.systAdm;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.BussEvent;
 import ModelNew.Enterprise;
 import ModelNew.entDir;
@@ -80,7 +80,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
 
         lblsysadmin = new javax.swing.JLabel();
         updateBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
+        dltBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         addBtn = new javax.swing.JButton();
@@ -91,7 +91,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         enterpriseType = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        contactField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         networkCombo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         viewBtn = new javax.swing.JButton();
@@ -108,11 +108,11 @@ public class ManageEntPanel extends javax.swing.JPanel {
             }
         });
 
-        deleteBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        deleteBtn.setText("DELETE");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        dltBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dltBtn.setText("DELETE");
+        dltBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                dltBtnActionPerformed(evt);
             }
         });
 
@@ -178,7 +178,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("CONTACT");
 
-        contactField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        phoneField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         networkCombo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         networkCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select any one " }));
@@ -231,7 +231,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                                         .addComponent(networkType, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(contactField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel7)
                                     .addGap(12, 12, 12)
@@ -247,7 +247,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                             .addComponent(lblsysadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(763, 763, 763)
-                            .addComponent(deleteBtn)
+                            .addComponent(dltBtn)
                             .addGap(79, 79, 79)))
                     .addContainerGap(34, Short.MAX_VALUE)))
         );
@@ -268,7 +268,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                     .addGap(33, 33, 33)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dltBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
@@ -289,7 +289,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(33, 33, 33)))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -299,11 +299,11 @@ public class ManageEntPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select 1 row to update");
             return;
         }
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
 
         String networkName = networkType.getSelectedItem().toString();
         String enterpriseType1 = enterpriseType.getSelectedItem().toString();
-        String enterpriseName = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String enterpriseName = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
 
         Network network = systAdmin.findNetwork(networkName);
         entDir enterpriseDirec = network.getentDir();
@@ -348,24 +348,24 @@ public class ManageEntPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_updateBtnActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to dlt");
             return;
         }
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        String networkName = (String) ModelNew.getValueAt(selectedRowIndex, 0);
-        String enterpriseType = (String) ModelNew.getValueAt(selectedRowIndex, 2);
-        String enterpriseName = (String) ModelNew.getValueAt(selectedRowIndex, 1);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        String networkName = (String) Model.getValueAt(selectedRowIndex, 0);
+        String enterpriseType = (String) Model.getValueAt(selectedRowIndex, 2);
+        String enterpriseName = (String) Model.getValueAt(selectedRowIndex, 1);
         Network network = systAdmin.findNetwork(networkName);
         entDir enterpriseDirec = network.getentDir();
         if (enterpriseType.equals("Business Event") && enterpriseDirec.getListOfEvents() != null) {
             for (BussEvent event : enterpriseDirec.getListOfEvents()) {
                 if (event.getName().equals(enterpriseName)) {
                     enterpriseDirec.dltEnterpriseEvent(event);
-                    JOptionPane.showMessageDialog(this, "Enterprise dltd successfully");
+                    JOptionPane.showMessageDialog(this, "Enterprise deleted successfully");
                     populateTable();
                 }
             }
@@ -373,7 +373,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
             for (Hotel hotel : enterpriseDirec.getListOfHotel()) {
                 if (hotel.getName().equals(enterpriseName)) {
                     enterpriseDirec.dltEnterpriseHotel(hotel);
-                    JOptionPane.showMessageDialog(this, "Enterprise dltd successfully");
+                    JOptionPane.showMessageDialog(this, "Enterprise deleted successfully");
                     populateTable();
                 }
             }
@@ -381,7 +381,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
             for (rest res : enterpriseDirec.getListOfrests()) {
                 if (res.getName().equals(enterpriseName)) {
                     enterpriseDirec.dltEnterpriserest(res);
-                    JOptionPane.showMessageDialog(this, "Enterprise dltd successfully");
+                    JOptionPane.showMessageDialog(this, "Enterprise deleted successfully");
                     populateTable();
                 }
             }
@@ -389,14 +389,14 @@ public class ManageEntPanel extends javax.swing.JPanel {
             for (HClub club : enterpriseDirec.getListOfHClub()) {
                 if (club.getName().equals(enterpriseName)) {
                     enterpriseDirec.dltEnterpriseHClub(club);
-                    JOptionPane.showMessageDialog(this, "Enterprise dltd successfully");
+                    JOptionPane.showMessageDialog(this, "Enterprise deleted successfully");
                     populateTable();
                 }
             }
         } else {
             JOptionPane.showMessageDialog(this, "not found");
         }
-    }//GEN-LAST:event_deleteBtnActionPerformed
+    }//GEN-LAST:event_dltBtnActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
@@ -404,12 +404,12 @@ public class ManageEntPanel extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
 
-        String networkName = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String enterpriseName = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String enterpriseType1 = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String enterprisephone = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String networkName = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String enterpriseName = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String enterpriseType1 = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String enterprisephone = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
 
         networkType.setSelectedItem(networkName);
         enterpriseType.setSelectedItem(enterpriseType1);
@@ -473,8 +473,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField contactField;
-    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton dltBtn;
     private javax.swing.JComboBox<String> enterpriseType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -487,13 +486,14 @@ public class ManageEntPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> networkCombo;
     private javax.swing.JComboBox<String> networkType;
+    private javax.swing.JTextField phoneField;
     private javax.swing.JButton updateBtn;
     private javax.swing.JButton viewBtn;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         String networkItem = networkCombo.getSelectedItem().toString();
         Network network = systAdmin.findNetwork(networkItem);
@@ -505,7 +505,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                 row[1] = eventList.get(i).getName();
                 row[2] = "Business Event";
                 row[3] = eventList.get(i).getphone();
-                ModelNew.addRow(row);
+                Model.addRow(row);
             }
         }
 
@@ -516,7 +516,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                 row[1] = restList.get(i).getName();
                 row[2] = "rest";
                 row[3] = restList.get(i).getphone();
-                ModelNew.addRow(row);
+                Model.addRow(row);
             }
         }
 
@@ -527,7 +527,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                 row[1] = HClubList.get(i).getName();
                 row[2] = "Health Club";
                 row[3] = HClubList.get(i).getphone();
-                ModelNew.addRow(row);
+                Model.addRow(row);
             }
         }
 
@@ -538,7 +538,7 @@ public class ManageEntPanel extends javax.swing.JPanel {
                 row[1] = hotelList.get(i).getName();
                 row[2] = "Hotel";
                 row[3] = hotelList.get(i).getphone();
-                ModelNew.addRow(row);
+                Model.addRow(row);
             }
         }
 

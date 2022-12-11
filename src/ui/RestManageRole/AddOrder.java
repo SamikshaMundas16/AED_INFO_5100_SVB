@@ -6,7 +6,7 @@ package ui.RestManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.entDir;
 import ModelNew.Manager;
 import ModelNew.MenuContents;
@@ -183,7 +183,7 @@ public class AddOrder extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
 
         String item = menuField.getText();
         int price = Integer.parseInt(priceField.getText().trim());
@@ -222,8 +222,8 @@ public class AddOrder extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateMenu() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         
         entDir enterpriseDirec = network.getentDir();
         for (rest rest : enterpriseDirec.getListOfrests()) {
@@ -232,7 +232,7 @@ public class AddOrder extends javax.swing.JPanel {
                 for (MenuContents item : rest.getListOfItem()) {
                     row[0] = item.getdtls();
                     row[1] = item.getPrice();
-                    ModelNew.addRow(row);
+                    Model.addRow(row);
                 }
             }
         }

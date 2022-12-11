@@ -6,7 +6,7 @@ package ui.RestManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.DeliManOrg;
 import ModelNew.entDir;
 import ModelNew.Network;
@@ -68,13 +68,13 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        contactField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         cityNameTextField = new javax.swing.JTextField();
-        deleteBtn = new javax.swing.JButton();
+        dltBtn = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -114,7 +114,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel3.setText("CONTACT");
 
-        contactField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        phoneField.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("CITY");
@@ -138,11 +138,11 @@ public class ManageOrgForRest extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel5.setText("MANAGE RESTAURANT ORGANISATION");
 
-        deleteBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        deleteBtn.setText("DELETE");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        dltBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        dltBtn.setText("DELETE");
+        dltBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                dltBtnActionPerformed(evt);
             }
         });
 
@@ -180,7 +180,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(cityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(228, 228, 228)
@@ -196,7 +196,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(156, 156, 156))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(deleteBtn)
+                                    .addComponent(dltBtn)
                                     .addGap(25, 25, 25)))))
                     .addContainerGap(13, Short.MAX_VALUE)))
         );
@@ -212,7 +212,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
                     .addGap(38, 38, 38)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dltBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(15, 15, 15)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,7 +224,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
                     .addGap(31, 31, 31)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel3)
-                        .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(45, 45, 45)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel4)
@@ -239,15 +239,15 @@ public class ManageOrgForRest extends javax.swing.JPanel {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (jTable1.getSelectedRowCount() != 1) {
             return;
         }
 
-        String orgType = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String orgName = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String orgphone = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String orgCity = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String orgType = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String orgName = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgphone = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String orgCity = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
 
         nameField.setText(orgName);
         phoneField.setText(orgphone);
@@ -261,7 +261,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         Object row[] = new Object[20];
         String name = nameField.getText();
         String phone = phoneField.getText();
@@ -282,26 +282,26 @@ public class ManageOrgForRest extends javax.swing.JPanel {
                 row[1] = name;
                 row[2] = phone;
                 row[3] = networkName;
-                ModelNew.addRow(row);
+                Model.addRow(row);
                 JOptionPane.showMessageDialog(this, "Org added successfully");
                 return;
             }
         }
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deleteBtnActionPerformed
+    }//GEN-LAST:event_dltBtnActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         if (jTable1.getSelectedRowCount() != 1) {
             JOptionPane.showMessageDialog(this, "Please select a row to update.");
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
 
         String orgType = orgCombo.getSelectedItem().toString();
-        String orgname = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgname = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
 
         entDir enterpriseDirec = network.getentDir();
         for (rest res : enterpriseDirec.getListOfrests()) {
@@ -324,8 +324,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityNameTextField;
-    private javax.swing.JTextField contactField;
-    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton dltBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -335,12 +334,13 @@ public class ManageOrgForRest extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> orgCombo;
+    private javax.swing.JTextField phoneField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         String orgType1 = orgCombo.getSelectedItem().toString();
         Network network1 = systAdmin.findNetwork(network.getName());
@@ -354,7 +354,7 @@ public class ManageOrgForRest extends javax.swing.JPanel {
                         row[1] = delivery.getName();
                         row[2] = delivery.getphone();
                         row[3] = network1.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
             }

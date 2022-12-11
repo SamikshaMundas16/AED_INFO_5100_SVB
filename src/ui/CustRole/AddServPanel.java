@@ -59,7 +59,7 @@ public class AddServPanel extends javax.swing.JPanel {
         backBtn = new javax.swing.JButton();
         eventBtn = new javax.swing.JButton();
         orderBtn = new javax.swing.JButton();
-        healthClubBtn = new javax.swing.JButton();
+        HClubBtn = new javax.swing.JButton();
         otherService = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
@@ -89,11 +89,11 @@ public class AddServPanel extends javax.swing.JPanel {
             }
         });
 
-        healthClubBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        healthClubBtn.setText("HEALTH CLUB ");
-        healthClubBtn.addActionListener(new java.awt.event.ActionListener() {
+        HClubBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        HClubBtn.setText("HEALTH CLUB ");
+        HClubBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                healthClubBtnActionPerformed(evt);
+                HClubBtnActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class AddServPanel extends javax.swing.JPanel {
                                         .addGap(79, 79, 79)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(otherService, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(healthClubBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(HClubBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addContainerGap(109, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -145,7 +145,7 @@ public class AddServPanel extends javax.swing.JPanel {
                     .addGap(53, 53, 53)
                     .addComponent(orderBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(51, 51, 51)
-                    .addComponent(healthClubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HClubBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(59, 59, 59)
                     .addComponent(otherService, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(147, Short.MAX_VALUE)))
@@ -164,9 +164,9 @@ public class AddServPanel extends javax.swing.JPanel {
         callOnOrderBook.accept(Book);
     }//GEN-LAST:event_orderBtnActionPerformed
 
-    private void healthClubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_healthClubBtnActionPerformed
+    private void HClubBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HClubBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_healthClubBtnActionPerformed
+    }//GEN-LAST:event_HClubBtnActionPerformed
 
     private void otherServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherServiceActionPerformed
         callOnServiceHotelBook.accept(Book);
@@ -174,9 +174,9 @@ public class AddServPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton HClubBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton eventBtn;
-    private javax.swing.JButton healthClubBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton orderBtn;
     private javax.swing.JButton otherService;

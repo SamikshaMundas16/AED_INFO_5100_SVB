@@ -7,7 +7,7 @@ package ui.main;
 import database.DbUtils;
 import java.util.List;
 import javax.swing.JOptionPane;
-import db.DbUtils;
+import database.DbUtils;
 import java.util.List;
 import javax.swing.JOptionPane;
 import ModelNew.Book;
@@ -207,6 +207,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     systAdmJPanel systAdm = new systAdmJPanel(systAdmin, this::renderNetworkPanel, this::renderEnterprisePanel, this::renderManagerPanel, this::renderCustPanel);
                     jSplitPane.setRightComponent(systAdm);
                     break;
+
                 case "Cust":
                     renderCust(uName);
                     break;
@@ -264,7 +265,8 @@ public class MainJFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Invalid uName or pwd");
         }
-                                           
+                                         
+                    
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed

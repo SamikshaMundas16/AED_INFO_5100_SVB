@@ -6,7 +6,7 @@ package ui.HManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.BussEvent;
 import ModelNew.CaterService;
 import ModelNew.DecorServices;
@@ -17,7 +17,7 @@ import ModelNew.Manager;
 import ModelNew.Network;
 import ModelNew.PhotoService;
 import ModelNew.systAdmin;
-import ModelNew.TransportOrg;
+import ModelNew.TransportionOrg;
 import ui.main.Validator;
 
     
@@ -73,13 +73,13 @@ public class HOrgAdmin extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         updateButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        usernameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
+        uNameField = new javax.swing.JTextField();
+        pwdField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         lblsysadmin = new javax.swing.JLabel();
-        deleteButton = new javax.swing.JButton();
+        dltButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         orgName = new javax.swing.JComboBox<>();
@@ -143,11 +143,11 @@ public class HOrgAdmin extends javax.swing.JPanel {
         lblsysadmin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblsysadmin.setText("MANAGE HOTEL ORGANISATION ADMIN");
 
-        deleteButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        deleteButton.setText("DELETE");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+        dltButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dltButton.setText("DELETE");
+        dltButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
+                dltButtonActionPerformed(evt);
             }
         });
 
@@ -188,7 +188,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(deleteButton)
+                        .addComponent(dltButton)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
@@ -214,8 +214,8 @@ public class HOrgAdmin extends javax.swing.JPanel {
                                 .addGap(42, 42, 42)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                                    .addComponent(usernameField)
-                                    .addComponent(passwordField)))
+                                    .addComponent(uNameField)
+                                    .addComponent(pwdField)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -239,7 +239,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(deleteButton)
+                .addComponent(dltButton)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
@@ -257,7 +257,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
@@ -267,7 +267,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(orgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,7 +298,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         Object row[] = new Object[20];
         String orgType = orgCombo.getSelectedItem().toString();
         String orgName1 = orgName.getSelectedItem().toString();
@@ -328,14 +328,14 @@ public class HOrgAdmin extends javax.swing.JPanel {
                                 row[3] = name;
                                 row[4] = uName;
                                 row[5] = pwd;
-                                ModelNew.addRow(row);
+                                Model.addRow(row);
                                 systAdmin.adduser(uName, pwd, "Laundary");
                                 JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
                                 return;
                             }
                         }
                     } else if (orgType.equals("Transportation")) {
-                        List<TransportOrg> org2 = list.get(i).gettransportOrgList();
+                        List<TransportionOrg> org2 = list.get(i).getTransportionOrgList();
                         for (int j = 0; j < org2.size(); j++) {
                             if (org2.get(j).getName().equals(orgName1)) {
                                 org2.get(j).addManager(name, network.getName(), uName, pwd);
@@ -345,7 +345,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
                                 row[3] = name;
                                 row[4] = uName;
                                 row[5] = pwd;
-                                ModelNew.addRow(row);
+                                Model.addRow(row);
                                 systAdmin.adduser(uName, pwd, "Transportation");
                                 JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
                                 return;
@@ -378,7 +378,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
                         return;
                     }
                 } else {
-                    List<TransportOrg> org3 = list.get(i).gettransportOrgList();
+                    List<TransportionOrg> org3 = list.get(i).getTransportionOrgList();
                     for (int j = 0; j < org3.size(); j++) {
                         orgName.addItem(org3.get(j).getName());
                     }
@@ -394,7 +394,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (jTable1.getSelectedRowCount() == 1) {
 
             String orgType = orgCombo.getSelectedItem().toString();
@@ -417,8 +417,8 @@ public class HOrgAdmin extends javax.swing.JPanel {
                             }
                         }
                     }
-                } else if (orgType.equals("Transportation") && hotel.gettransportOrgList() != null) {
-                    for (TransportOrg trans : hotel.gettransportOrgList()) {
+                } else if (orgType.equals("Transportation") && hotel.getTransportionOrgList() != null) {
+                    for (TransportionOrg trans : hotel.getTransportionOrgList()) {
                         for (Manager man : trans.getListOfManager()) {
                             if (man.getuName().equals(uNameField.getText())) {
                                 man.setName(nameField.getText());
@@ -441,18 +441,18 @@ public class HOrgAdmin extends javax.swing.JPanel {
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+    private void dltButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deleteButtonActionPerformed
+    }//GEN-LAST:event_dltButtonActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        String city = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String orgType = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String oName = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String managerName = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
-        String manageruName = ModelNew.getValueAt(jTable1.getSelectedRow(), 4).toString();
-        String managerpwd = ModelNew.getValueAt(jTable1.getSelectedRow(), 5).toString();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        String city = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String orgType = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String oName = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String managerName = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String manageruName = Model.getValueAt(jTable1.getSelectedRow(), 4).toString();
+        String managerpwd = Model.getValueAt(jTable1.getSelectedRow(), 5).toString();
 
         nameField.setText(managerName);
         uNameField.setText(manageruName);
@@ -471,7 +471,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton dltButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -486,14 +486,14 @@ public class HOrgAdmin extends javax.swing.JPanel {
     private javax.swing.JTextField networkName;
     private javax.swing.JComboBox<String> orgCombo;
     private javax.swing.JComboBox<String> orgName;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JTextField pwdField;
+    private javax.swing.JTextField uNameField;
     private javax.swing.JButton updateButton;
-    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
 
         Network network1 = systAdmin.findNetwork(network.getName());
@@ -513,13 +513,13 @@ public class HOrgAdmin extends javax.swing.JPanel {
                             row[3] = manager.getName();
                             row[4] = manager.getuName();
                             row[5] = manager.getpwd();
-                            ModelNew.addRow(row);
+                            Model.addRow(row);
                         }
                     }
                 }
-                if (hotel.gettransportOrgList() != null) {
+                if (hotel.getTransportionOrgList() != null) {
                     row[0] = "Transportation";
-                    for (TransportOrg transportation : hotel.gettransportOrgList()) {
+                    for (TransportionOrg transportation : hotel.getTransportionOrgList()) {
                         for (Manager manager : transportation.getListOfManager()) {       //add manager 
                             row[0] = network1.getName();
                             row[1] = "Transportation";
@@ -527,7 +527,7 @@ public class HOrgAdmin extends javax.swing.JPanel {
                             row[3] = manager.getName();
                             row[4] = manager.getuName();
                             row[5] = manager.getpwd();
-                            ModelNew.addRow(row);
+                            Model.addRow(row);
                         }
                     }
                 }

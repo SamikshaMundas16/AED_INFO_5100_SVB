@@ -7,7 +7,7 @@ package ui.HClubManageRole;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.Book;
 import ModelNew.Cust;
 import ModelNew.CustDirectory;
@@ -200,8 +200,8 @@ public class ViewTask extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Book Book = (Book) ModelNew.getValueAt(selectedRowIndex, 0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Book Book = (Book) Model.getValueAt(selectedRowIndex, 0);
 
         HClubService HClubService = null;
         for (Service service : Book.getServices()) {
@@ -286,8 +286,8 @@ public class ViewTask extends javax.swing.JPanel {
 
     private void populateTable() {
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
 
         Object row[] = new Object[10];
         CustDirectory CustDirec = systAdmin.getCustDirec(); //get all Custs
@@ -319,7 +319,7 @@ public class ViewTask extends javax.swing.JPanel {
                                     break;
                             }
                         }
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                     
                 }

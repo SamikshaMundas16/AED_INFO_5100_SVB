@@ -7,7 +7,7 @@ package ui.RestManageRole;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.Book;
 import ModelNew.Cust;
 import ModelNew.CustDirectory;
@@ -90,6 +90,11 @@ public class TaskRest extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         deliveryOrg.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        deliveryOrg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliveryOrgActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("SELECT A ORGANIZATION FOR DELIVERYMAN");
@@ -184,8 +189,8 @@ public class TaskRest extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Book Book = (Book) ModelNew.getValueAt(selectRowIndex, 0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Book Book = (Book) Model.getValueAt(selectRowIndex, 0);
 
         restService resService = null;
         for (Service service : Book.getServices()) {
@@ -227,8 +232,8 @@ public class TaskRest extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Book Book = (Book) ModelNew.getValueAt(selectRowIndex, 0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Book Book = (Book) Model.getValueAt(selectRowIndex, 0);
 
         restService resService = null;
         for (Service service : Book.getServices()) {
@@ -256,6 +261,10 @@ public class TaskRest extends javax.swing.JPanel {
         callOnCreateMethod.run();
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void deliveryOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryOrgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deliveryOrgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptBtn;
@@ -271,8 +280,8 @@ public class TaskRest extends javax.swing.JPanel {
 
     private void populateTable() {
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
 
         Object row[] = new Object[10];
         CustDirectory CustDirec = systAdmin.getCustDirec(); //get all Custs
@@ -286,7 +295,7 @@ public class TaskRest extends javax.swing.JPanel {
                         row[2] = Book.getStatus();
                         row[3] = Cust.getAddress();
                         row[4] = restService.getStatus();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
             }

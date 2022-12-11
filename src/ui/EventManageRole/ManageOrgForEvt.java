@@ -6,7 +6,7 @@ package ui.EventManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.BussEvent;
 import ModelNew.CaterService;
 import ModelNew.DecorServices;
@@ -64,9 +64,9 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
 
         cityNameTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        deleteBtn = new javax.swing.JButton();
+        dltBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        contactField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -87,11 +87,11 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setText("ORGANISATION TYPE");
 
-        deleteBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        deleteBtn.setText("DELETE");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        dltBtn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        dltBtn.setText("DELETE");
+        dltBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                dltBtnActionPerformed(evt);
             }
         });
 
@@ -179,7 +179,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cityNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(282, 282, 282)
@@ -191,7 +191,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(deleteBtn)
+                        .addComponent(dltBtn)
                         .addGap(32, 32, 32))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +207,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dltBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -219,7 +219,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -236,16 +236,16 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cityNameTextFieldActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to dlt");
             return;
         }
-        String OrgType = (String) ModelNew.getValueAt(selectedRowIndex, 0);
-        String OrgName = (String) ModelNew.getValueAt(selectedRowIndex, 1);
+        String OrgType = (String) Model.getValueAt(selectedRowIndex, 0);
+        String OrgName = (String) Model.getValueAt(selectedRowIndex, 1);
         entDir enterpriseDirec = network.getentDir();
         for (BussEvent event : enterpriseDirec.getListOfEvents()) {
             if (event.findManager(user) != null) {
@@ -282,7 +282,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
 
                                          
 
-    }//GEN-LAST:event_deleteBtnActionPerformed
+    }//GEN-LAST:event_dltBtnActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         callOnCreateMethod.run();
@@ -290,15 +290,15 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (jTable1.getSelectedRowCount() != 1) {
             return;
         }
 
-        String orgType = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String orgName = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String orgphone = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String orgCity = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String orgType = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String orgName = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgphone = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String orgCity = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
 
         nameField.setText(orgName);
         phoneField.setText(orgphone);
@@ -313,10 +313,10 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row to update.");
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
 
         String orgType = orgCombo.getSelectedItem().toString();
-        String orgname = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgname = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
 
         entDir enterpriseDirec = network.getentDir();
         for (BussEvent event : enterpriseDirec.getListOfEvents()) {
@@ -356,7 +356,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         Object row[] = new Object[20];
         String networkName = network.getName();
         String name = nameField.getText();
@@ -378,7 +378,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                 row[1] = name;
                 row[2] = phone;
                 row[3] = networkName;
-                ModelNew.addRow(row);
+                Model.addRow(row);
                 JOptionPane.showMessageDialog(this, "Catering Organisation added successfully");
                 return;
             } else if (orgType1.equals("Decor")) {
@@ -387,7 +387,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                 row[1] = name;
                 row[2] = phone;
                 row[3] = networkName;
-                ModelNew.addRow(row);
+                Model.addRow(row);
                 JOptionPane.showMessageDialog(this, "Decor Organisation successfully");
                 return;
             } else {
@@ -396,7 +396,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                 row[1] = name;
                 row[2] = phone;
                 row[3] = networkName;
-                ModelNew.addRow(row);
+                Model.addRow(row);
                 JOptionPane.showMessageDialog(this, "Photography Organisation added successfully");
                 return;
             }
@@ -408,8 +408,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
     private javax.swing.JButton addBtn;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityNameTextField;
-    private javax.swing.JTextField contactField;
-    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton dltBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -419,12 +418,13 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> orgCombo;
+    private javax.swing.JTextField phoneField;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         String orgType1 = orgCombo.getSelectedItem().toString();
         Network network1 = systAdmin.findNetwork(network.getName());
@@ -441,7 +441,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                         row[1] = catering.getName();
                         row[2] = catering.getphone();
                         row[3] = network1.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
                 if (event.getListOfDecors() != null) {
@@ -451,7 +451,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                         row[1] = decor.getName();
                         row[2] = decor.getphone();
                         row[3] = network.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
                 if (event.getListOfPhotoServices() != null) {
@@ -461,7 +461,7 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
                         row[1] = photo.getName();
                         row[2] = photo.getphone();
                         row[3] = network.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
 

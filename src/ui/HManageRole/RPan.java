@@ -6,7 +6,7 @@ package ui.HManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.entDir;
 import ModelNew.Hotel;
 import ModelNew.Manager;
@@ -352,8 +352,8 @@ public class RPan extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         entDir enterpriseDirec = network.getentDir();
         for (Hotel hotel : enterpriseDirec.getListOfHotel()) {
             for (Manager man : hotel.getListOfManager()) {
@@ -364,7 +364,7 @@ public class RPan extends javax.swing.JPanel {
                         row[0] = room.getRoomNo();
                         row[1] = room.getRoomType().getName();
                         row[2] = room.getRoomType().getcost();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
             }

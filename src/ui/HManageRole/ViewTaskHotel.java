@@ -7,7 +7,7 @@ package ui.HManageRole;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.Book;
 import ModelNew.Cust;
 import ModelNew.CustDirectory;
@@ -15,7 +15,7 @@ import ModelNew.Hotel;
 import ModelNew.LaundaryOrg;
 import ModelNew.Org;
 import ModelNew.systAdmin;
-import ModelNew.TransportOrg;
+import ModelNew.TransportionOrg;
 import ModelNew.services.ServiceHotel;
 import ModelNew.services.Service;
 
@@ -185,8 +185,8 @@ public class ViewTaskHotel extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Book Book = (Book) ModelNew.getValueAt(selectedRowIndex, 0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Book Book = (Book) Model.getValueAt(selectedRowIndex, 0);
 
         ServiceHotel ServiceHotel = null;
         for (Service service : Book.getServices()) {
@@ -208,7 +208,7 @@ public class ViewTaskHotel extends javax.swing.JPanel {
         }
 
         LaundaryOrg laundary = (LaundaryOrg) laundaryOrg.getSelectedItem();
-        TransportOrg transportation = (TransportOrg) TransportOrg.getSelectedItem();
+        TransportionOrg transportation = (TransportionOrg) TransportionOrg.getSelectedItem();
 
         List<Org> Orgs = new ArrayList<>();
         for (ServiceHotel.ServiceHotelType type : ServiceHotel.getServiceHotels()) {
@@ -244,6 +244,41 @@ public class ViewTaskHotel extends javax.swing.JPanel {
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void populateTable() {
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
+
+        CustDirectory CustDirec = systAdmin.getCustDirec(); //get all Custs
+        for (Cust Cust : CustDirec.getListOfCust()) {
+            for (Book Book : Cust.getBkList()) {      //get Book dtls each Cust
+                for (Service service : Book.getServices()) {       //get services under Book
+                    System.out.println("Enterprise : " + service.getEnterprise());
+                    if (hotel.getName().equals(service.getEnterprise().getName())) {
+                        ServiceHotel ServiceHotel = (ServiceHotel) service;
+
+                        Object row[] = new Object[10];
+                        row[0] = Book;
+                        row[1] = Cust;
+                        row[2] = ServiceHotel.getStatus();
+                        row[3] = "NO";
+                        row[4] = "NO";
+
+                        for (ServiceHotel.ServiceHotelType type : ServiceHotel.getServiceHotels()) {
+                            switch (type) {
+                                case LAUNDARY:
+                                    row[3] = "YES";
+                                    break;
+                                case TRANSPORTATION:
+                                    row[4] = "YES";
+                                    break;
+                            }
+                        }
+                        Model.addRow(row);
+                    }
+                }
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
@@ -259,16 +294,16 @@ public class ViewTaskHotel extends javax.swing.JPanel {
 
     private void populateComboBox() {
         laundaryOrg.addItem(null);
-        TransportOrg.addItem(null);
+        transportationOrg.addItem(null);
 
         for (LaundaryOrg laundary : hotel.getLaundaryOrg()) {
             if (laundary != null) {
                 laundaryOrg.addItem(laundary);
             }
         }
-        for (TransportOrg transportation : hotel.gettransportOrgList()) {
+        for (TransportionOrg transportation : hotel.getTransportionOrgList()) {
             if (transportation != null) {
-                TransportOrg.addItem(transportation);
+                transportationOrg.addItem(transportation);
             }
         }
     }

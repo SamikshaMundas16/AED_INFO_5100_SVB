@@ -6,7 +6,7 @@ package ui.HClubManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.entDir;
 import ModelNew.HClub;
 import ModelNew.Network;
@@ -72,7 +72,7 @@ public class ManageOrgPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         dltBtn = new javax.swing.JButton();
         cityNameTextField = new javax.swing.JTextField();
-        contactField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
@@ -123,10 +123,10 @@ public class ManageOrgPanel extends javax.swing.JPanel {
             }
         });
 
-        contactField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        contactField.addActionListener(new java.awt.event.ActionListener() {
+        phoneField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        phoneField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactFieldActionPerformed(evt);
+                phoneFieldActionPerformed(evt);
             }
         });
 
@@ -198,7 +198,7 @@ public class ManageOrgPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(orgCombo, 0, 218, Short.MAX_VALUE)
                             .addComponent(nameField)
-                            .addComponent(contactField)
+                            .addComponent(phoneField)
                             .addComponent(cityNameTextField)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -231,7 +231,7 @@ public class ManageOrgPanel extends javax.swing.JPanel {
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -283,10 +283,10 @@ public class ManageOrgPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row to update.");
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
 
         String orgType = orgCombo.getSelectedItem().toString();
-        String orgname = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgname = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
 
         entDir enterpriseDirec = network.getentDir();
         for (HClub club : enterpriseDirec.getListOfHClub()) {
@@ -327,14 +327,14 @@ public class ManageOrgPanel extends javax.swing.JPanel {
 
     private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to dlt");
             return;
         }
-        String OrgType = (String) ModelNew.getValueAt(selectedRowIndex, 0);
-        String OrgName = (String) ModelNew.getValueAt(selectedRowIndex, 1);
+        String OrgType = (String) Model.getValueAt(selectedRowIndex, 0);
+        String OrgName = (String) Model.getValueAt(selectedRowIndex, 1);
         entDir enterpriseDirec = network.getentDir();
         for (HClub club : enterpriseDirec.getListOfHClub()) {
             if (club.findManager(user) != null) {
@@ -371,20 +371,20 @@ public class ManageOrgPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_dltBtnActionPerformed
 
-    private void contactFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactFieldActionPerformed
+    private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_contactFieldActionPerformed
+    }//GEN-LAST:event_phoneFieldActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (jTable1.getSelectedRowCount() != 1) {
             return;
         }
 
-        String orgType = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String orgName = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String orgphone = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String orgCity = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String orgType = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String orgName = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgphone = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String orgCity = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
 
         nameField.setText(orgName);
         phoneField.setText(orgphone);
@@ -402,7 +402,6 @@ public class ManageOrgPanel extends javax.swing.JPanel {
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityNameTextField;
-    private javax.swing.JTextField contactField;
     private javax.swing.JButton dltBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -413,13 +412,14 @@ public class ManageOrgPanel extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> orgCombo;
+    private javax.swing.JTextField phoneField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         String orgType1 = orgCombo.getSelectedItem().toString();
         Network network1 = systAdmin.findNetwork(network.getName());
@@ -433,7 +433,7 @@ public class ManageOrgPanel extends javax.swing.JPanel {
                         row[1] = Phy.getName();
                         row[2] = Phy.getphone();
                         row[3] = network1.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
                 if (health.getListOfTherapyOrg() != null) {
@@ -443,7 +443,7 @@ public class ManageOrgPanel extends javax.swing.JPanel {
                         row[1] = Therapy.getName();
                         row[2] = Therapy.getphone();
                         row[3] = network.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
                 if (health.getListOfTrainerOrg() != null) {
@@ -453,7 +453,7 @@ public class ManageOrgPanel extends javax.swing.JPanel {
                         row[1] = trainer.getName();
                         row[2] = trainer.getphone();
                         row[3] = network.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
 

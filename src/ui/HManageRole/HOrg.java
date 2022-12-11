@@ -6,13 +6,13 @@ package ui.HManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.entDir;
 import ModelNew.Hotel;
 import ModelNew.LaundaryOrg;
 import ModelNew.Network;
 import ModelNew.systAdmin;
-import ModelNew.TransportOrg;
+import ModelNew.TransportionOrg;
 
 /**
  *
@@ -63,7 +63,7 @@ public class HOrg extends javax.swing.JPanel {
         orgCombo = new javax.swing.JComboBox<>();
         updateButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        contactField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
@@ -71,7 +71,7 @@ public class HOrg extends javax.swing.JPanel {
         lblsysadmin = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        deleteBtn = new javax.swing.JButton();
+        dltBtn = new javax.swing.JButton();
         cityNameTextField = new javax.swing.JTextField();
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -151,11 +151,11 @@ public class HOrg extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("ORGANISATION TYPE ");
 
-        deleteBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        deleteBtn.setText("DELETE");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        dltBtn.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        dltBtn.setText("DELETE");
+        dltBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                dltBtnActionPerformed(evt);
             }
         });
 
@@ -193,11 +193,11 @@ public class HOrg extends javax.swing.JPanel {
                                             .addComponent(updateButton))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(cityNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(contactField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(779, 779, 779)
-                            .addComponent(deleteBtn)
+                            .addComponent(dltBtn)
                             .addGap(24, 24, 24)))
                     .addContainerGap(83, Short.MAX_VALUE)))
         );
@@ -218,7 +218,7 @@ public class HOrg extends javax.swing.JPanel {
                             .addGap(55, 55, 55)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dltBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(47, 47, 47)))
                     .addGap(34, 34, 34)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,7 +227,7 @@ public class HOrg extends javax.swing.JPanel {
                     .addGap(27, 27, 27)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(38, 38, 38)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
@@ -241,15 +241,15 @@ public class HOrg extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (jTable1.getSelectedRowCount() != 1) {
             return;
         }
 
-        String orgType = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String orgName = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String orgphone = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String orgCity = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String orgType = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String orgName = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgphone = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String orgCity = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
 
         nameField.setText(orgName);
         phoneField.setText(orgphone);
@@ -268,10 +268,10 @@ public class HOrg extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row to update.");
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
 
         String orgType = orgCombo.getSelectedItem().toString();
-        String orgname = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String orgname = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
 
         entDir enterpriseDirec = network.getentDir();
         for (Hotel hotel : enterpriseDirec.getListOfHotel()) {
@@ -285,8 +285,8 @@ public class HOrg extends javax.swing.JPanel {
                         return;
                     }
                 }
-            } else if (orgType.equals("Transportation") && hotel.gettransportOrgList() != null) {
-                for (TransportOrg trans : hotel.gettransportOrgList()) {
+            } else if (orgType.equals("Transportation") && hotel.getTransportionOrgList() != null) {
+                for (TransportionOrg trans : hotel.getTransportionOrgList()) {
                     if (trans.getName().equals(orgname)) {
                         trans.setName(nameField.getText());
                         trans.setphone(phoneField.getText());
@@ -301,7 +301,7 @@ public class HOrg extends javax.swing.JPanel {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         Object row[] = new Object[20];
         String networkName = network.getName(); //find the network from city-combobox
         String name = nameField.getText();
@@ -324,16 +324,16 @@ public class HOrg extends javax.swing.JPanel {
                 row[1] = name;
                 row[2] = phone;
                 row[3] = networkName;
-                ModelNew.addRow(row);
+                Model.addRow(row);
                 JOptionPane.showMessageDialog(this, " Organisation added successfully");
                 return;                               //HClub found
             } else {
-                hotel.get(i).addTransportOrg(name, phone, networkName);
+                hotel.get(i).addTransportionOrg(name, phone, networkName);
                 row[0] = orgType1;
                 row[1] = name;
                 row[2] = phone;
                 row[3] = networkName;
-                ModelNew.addRow(row);
+                Model.addRow(row);
                 JOptionPane.showMessageDialog(this, "Organisation added successfully");
                 return;
             }
@@ -348,17 +348,16 @@ public class HOrg extends javax.swing.JPanel {
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deleteBtnActionPerformed
+    }//GEN-LAST:event_dltBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityNameTextField;
-    private javax.swing.JTextField contactField;
-    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton dltBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -368,12 +367,13 @@ public class HOrg extends javax.swing.JPanel {
     private javax.swing.JLabel lblsysadmin;
     private javax.swing.JTextField nameField;
     private javax.swing.JComboBox<String> orgCombo;
+    private javax.swing.JTextField phoneField;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         String orgType1 = orgCombo.getSelectedItem().toString();
         Network network1 = systAdmin.findNetwork(network.getName());
@@ -390,17 +390,17 @@ public class HOrg extends javax.swing.JPanel {
                         row[1] = laundary.getName();
                         row[2] = laundary.getphone();
                         row[3] = network1.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
-                if (hotel.gettransportOrgList() != null) {
+                if (hotel.getTransportionOrgList() != null) {
                     row[0] = "Transportation";
-                    for (TransportOrg transportation : hotel.gettransportOrgList()) {
+                    for (TransportionOrg transportation : hotel.getTransportionOrgList()) {
                         row[0] = "Transportation";
                         row[1] = transportation.getName();
                         row[2] = transportation.getphone();
                         row[3] = network.getName();
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
 

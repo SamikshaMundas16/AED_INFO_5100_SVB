@@ -6,7 +6,7 @@ package ui.CustRole;
 import java.util.List;
 import java.util.function.Consumer;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.Book;
 import ModelNew.Cust;
 import ModelNew.CustDirectory;
@@ -157,7 +157,7 @@ public class ManageBook extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         String BookId = (String) ModelNew.getValueAt(selectedRowIndex, 1);
 
         System.out.println(BookId + " is selected");
@@ -176,7 +176,7 @@ public class ManageBook extends javax.swing.JPanel {
 
     private void viewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOrderActionPerformed
         int selectedRowIndex = jTable1.getSelectedRow();
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a Book to view its dtls.");
             return;
@@ -208,8 +208,8 @@ public class ManageBook extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         CustDirectory customDirec = systAdmin.getCustDirec();
         Cust Cust = customDirec.findCustuName(uName);
@@ -221,7 +221,7 @@ public class ManageBook extends javax.swing.JPanel {
             row[3] = BkList.getStatus();
             row[4] = BkList.getintime();
             row[5] = BkList.getouttime();
-            ModelNew.addRow(row);
+            Model.addRow(row);
         }
 
     }

@@ -17,7 +17,7 @@ public class Hotel extends Enterprise {
     private RoomList roomListDir;
     private List<Manager> listOfManager;
     private List<LaundaryOrg> laundaryOrg;
-    private List<TransportOrg> transportOrgList;
+    private List<TransportionOrg> TransportionOrgList;
 
     public Hotel() {
 
@@ -27,7 +27,7 @@ public class Hotel extends Enterprise {
         super(name, phone);
         listOfManager = new ArrayList<>();
         roomListDir = new RoomList();
-        transportOrgList = new ArrayList<>();
+        TransportionOrgList = new ArrayList<>();
         laundaryOrg = new ArrayList<>();
     }
 
@@ -39,12 +39,12 @@ public class Hotel extends Enterprise {
         this.laundaryOrg = laundaryList;
     }
 
-    public List<TransportOrg> gettransportOrgList() {
-        return transportOrgList;
+    public List<TransportionOrg> getTransportionOrgList() {
+        return TransportionOrgList;
     }
 
-    public void settransportOrgList(List<TransportOrg> transportationList) {
-        this.transportOrgList = transportationList;
+    public void setTransportionOrgList(List<TransportionOrg> transportationList) {
+        this.TransportionOrgList = transportationList;
     }
 
     public RoomList getroomListDir() {
@@ -107,9 +107,9 @@ public class Hotel extends Enterprise {
         laundaryOrg.add(laundaryOrg1);
     }
 
-    public void addTransportOrg(String name, String phone, String networkName) {
-        TransportOrg to = new TransportOrg(name, phone, networkName);
-        transportOrgList.add(to);
+    public void addTransportionOrg(String name, String phone, String networkName) {
+        TransportionOrg to = new TransportionOrg(name, phone, networkName);
+        TransportionOrgList.add(to);
     }
 
     public void dltManager(Manager man) {
@@ -120,7 +120,7 @@ public class Hotel extends Enterprise {
         laundaryOrg.remove(laundary);
     }
 
-    public void dltTransportation(TransportOrg transport) {
-        transportOrgList.remove(transport);
+    public void dltTransportation(TransportionOrg transport) {
+        TransportionOrgList.remove(transport);
     }
 }

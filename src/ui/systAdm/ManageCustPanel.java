@@ -5,7 +5,7 @@
 package ui.systAdm;
 
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.Cust;
 import ModelNew.CustDirectory;
 import ModelNew.systAdmin;
@@ -97,10 +97,10 @@ public class ManageCustPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         lblsysadmin = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        deleteBtn = new javax.swing.JButton();
+        dltBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        contactField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
         addButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
@@ -110,8 +110,8 @@ public class ManageCustPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
-        usernameField = new javax.swing.JTextField();
+        pwdField = new javax.swing.JTextField();
+        uNameField = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
 
         backButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -128,11 +128,11 @@ public class ManageCustPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("PHONE NUMBER");
 
-        deleteBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        deleteBtn.setText("DELETE");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        dltBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dltBtn.setText("DELETE");
+        dltBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                dltBtnActionPerformed(evt);
             }
         });
 
@@ -203,7 +203,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(deleteBtn)
+                                .addComponent(dltBtn)
                                 .addGap(9, 9, 9))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +218,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,11 +228,11 @@ public class ManageCustPanel extends javax.swing.JPanel {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(21, 21, 21)
-                                                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(70, 70, 70)
                                         .addComponent(updateButton))))
@@ -255,19 +255,19 @@ public class ManageCustPanel extends javax.swing.JPanel {
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deleteBtn)
+                .addComponent(dltBtn)
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(contactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -312,18 +312,31 @@ public class ManageCustPanel extends javax.swing.JPanel {
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deleteBtnActionPerformed
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        String uName = Model.getValueAt(jTable1.getSelectedRow(), 4).toString();
+        CustDirectory CustDirec = systAdmin.getCustDirec();
+        if (CustDirec.getListOfCust() != null) {
+            for (Cust Cust : CustDirec.getListOfCust()) {
+                if (Cust.getuName().equals(uName)) {
+                    systAdmin.dltCust(Cust);
+                    populateTable();
+                    JOptionPane.showMessageDialog(this, "Cust dltd successfully");
+                    return;
+                }
+            }
+        }
+    }//GEN-LAST:event_dltBtnActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        String CustName = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String Custphone = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String CustCity = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String CustAddress = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
-        String uName = ModelNew.getValueAt(jTable1.getSelectedRow(), 4).toString();
-        String pwd = ModelNew.getValueAt(jTable1.getSelectedRow(), 5).toString();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        String CustName = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String Custphone = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String CustCity = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String CustAddress = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String uName = Model.getValueAt(jTable1.getSelectedRow(), 4).toString();
+        String pwd = Model.getValueAt(jTable1.getSelectedRow(), 5).toString();
         nameField.setText(CustName);
         phoneField.setText(Custphone);
         cityField.setText(CustCity);
@@ -378,7 +391,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (jTable1.getSelectedRowCount() == 1) {
             String user = uNameField.getText();
             Cust Cust = systAdmin.findCust(user);
@@ -398,8 +411,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
     private javax.swing.JTextField addressField;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityField;
-    private javax.swing.JTextField contactField;
-    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton dltBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -411,14 +423,15 @@ public class ManageCustPanel extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblsysadmin;
     private javax.swing.JTextField nameField;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JTextField pwdField;
+    private javax.swing.JTextField uNameField;
     private javax.swing.JButton updateButton;
-    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
     
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         for (Cust Cust : systAdmin.getCustDirec().getListOfCust()) {
             row[0] = Cust.getName();
@@ -427,7 +440,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
             row[3] = Cust.getAddress();
             row[4] = Cust.getuName();
             row[5] = Cust.getpwd();
-            ModelNew.addRow(row);
+            Model.addRow(row);
         }
     }
 }

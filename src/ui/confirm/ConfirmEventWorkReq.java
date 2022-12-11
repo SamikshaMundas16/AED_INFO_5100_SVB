@@ -1,6 +1,6 @@
 package ui.confirm;
 
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.Book;
 import ModelNew.Cust;
 import ModelNew.CustDirectory;
@@ -37,7 +37,7 @@ public class ConfirmEventWorkReq extends javax.swing.JPanel {
         lblbookservices.setText("ASSIGNED WORK REQUESTS FOR ");
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable1.setModelNew(new javax.swing.table.DefaultTableModelNew(
+        jTable1.setModelNew(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -88,8 +88,9 @@ public class ConfirmEventWorkReq extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
 
         CustDirectory CustDirec = systAdmin.getCustDirec();
         for (Cust Cust : CustDirec.getListOfCust()) {
@@ -105,7 +106,7 @@ public class ConfirmEventWorkReq extends javax.swing.JPanel {
                                 row[3] = service.getDate();
                                 row[4] = service.getStatus();
 
-                                ModelNew.addRow(row);
+                                Model.addRow(row);
                             }
 
                             System.out.println();

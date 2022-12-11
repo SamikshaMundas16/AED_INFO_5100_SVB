@@ -6,7 +6,7 @@ package ui.EventManageRole;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.BussEvent;
 import ModelNew.CaterService;
 import ModelNew.DecorServices;
@@ -82,13 +82,13 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
+        dltBtn = new javax.swing.JButton();
         orgCombo = new javax.swing.JComboBox<>();
-        usernameField = new javax.swing.JTextField();
+        uNameField = new javax.swing.JTextField();
         nameField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         networkName = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
+        pwdField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -115,11 +115,11 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
             }
         });
 
-        deleteBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        deleteBtn.setText("DELETE");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        dltBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        dltBtn.setText("DELETE");
+        dltBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                dltBtnActionPerformed(evt);
             }
         });
 
@@ -209,13 +209,13 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                    .addComponent(uNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                     .addComponent(nameField)
-                    .addComponent(passwordField))
+                    .addComponent(pwdField))
                 .addGap(99, 99, 99))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(deleteBtn)
+                .addComponent(dltBtn)
                 .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +245,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dltBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -256,13 +256,13 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(orgCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(orgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -276,17 +276,17 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
         callOnCreateMethod.run();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+    private void dltBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dltBtnActionPerformed
         // TODO add your handling code here:
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to dlt");
             return;
         }
-        String orgType = (String) ModelNew.getValueAt(selectedRowIndex, 1);
-        String OrgName = (String) ModelNew.getValueAt(selectedRowIndex, 2);
-        String selecteduser = (String) ModelNew.getValueAt(selectedRowIndex, 4);
+        String orgType = (String) Model.getValueAt(selectedRowIndex, 1);
+        String OrgName = (String) Model.getValueAt(selectedRowIndex, 2);
+        String selecteduser = (String) Model.getValueAt(selectedRowIndex, 4);
         entDir enterpriseDirec = network.getentDir();
         for (BussEvent event : enterpriseDirec.getListOfEvents()) {
             if (event.findManager(user) != null) {
@@ -334,7 +334,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
         }
                                           
 
-    }//GEN-LAST:event_deleteBtnActionPerformed
+    }//GEN-LAST:event_dltBtnActionPerformed
 
     private void orgComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgComboActionPerformed
         orgName.removeAllItems();
@@ -366,13 +366,13 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
     }//GEN-LAST:event_orgComboActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        String city = ModelNew.getValueAt(jTable1.getSelectedRow(), 0).toString();
-        String orgType = ModelNew.getValueAt(jTable1.getSelectedRow(), 1).toString();
-        String oName = ModelNew.getValueAt(jTable1.getSelectedRow(), 2).toString();
-        String managerName = ModelNew.getValueAt(jTable1.getSelectedRow(), 3).toString();
-        String manageruName = ModelNew.getValueAt(jTable1.getSelectedRow(), 4).toString();
-        String managerpwd = ModelNew.getValueAt(jTable1.getSelectedRow(), 5).toString();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        String city = Model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String orgType = Model.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String oName = Model.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        String managerName = Model.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        String manageruName = Model.getValueAt(jTable1.getSelectedRow(), 4).toString();
+        String managerpwd = Model.getValueAt(jTable1.getSelectedRow(), 5).toString();
 
         nameField.setText(managerName);
         uNameField.setText(manageruName);
@@ -383,7 +383,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         Object row[] = new Object[20];
         String orgType = orgCombo.getSelectedItem().toString();
         String orgName1 = orgName.getSelectedItem().toString();
@@ -412,7 +412,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                                 row[3] = name;
                                 row[4] = uName;
                                 row[5] = pwd;
-                                ModelNew.addRow(row);
+                                Model.addRow(row);
                                 systAdmin.adduser(uName, pwd, "Catering");
                                 JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
                                 return;
@@ -431,7 +431,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                                 row[3] = name;
                                 row[4] = uName;
                                 row[5] = pwd;
-                                ModelNew.addRow(row);
+                                Model.addRow(row);
                                 systAdmin.adduser(uName, pwd, "Decor");
                                 JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
                                 return;
@@ -448,7 +448,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                                 row[3] = name;
                                 row[4] = uName;
                                 row[5] = pwd;
-                                ModelNew.addRow(row);
+                                Model.addRow(row);
                                 systAdmin.adduser(uName, pwd, "Photography");
                                 JOptionPane.showMessageDialog(this, " Organisation Manager added successfully");
                                 return;
@@ -468,7 +468,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
         if (jTable1.getSelectedRowCount() == 1) {
 
             String orgType = orgCombo.getSelectedItem().toString();
@@ -528,7 +528,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton dltBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -542,14 +542,14 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
     private javax.swing.JTextField networkName;
     private javax.swing.JComboBox<String> orgCombo;
     private javax.swing.JComboBox<String> orgName;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JTextField pwdField;
+    private javax.swing.JTextField uNameField;
     private javax.swing.JButton updateBtn;
-    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
         Object row[] = new Object[10];
         String orgType1 = orgCombo.getSelectedItem().toString();
         Network network1 = systAdmin.findNetwork(network.getName());
@@ -569,7 +569,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                             row[3] = manager.getName();
                             row[4] = manager.getuName();
                             row[5] = manager.getpwd();
-                            ModelNew.addRow(row);
+                            Model.addRow(row);
                         }
                     }
                 }
@@ -583,7 +583,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                             row[3] = manager.getName();
                             row[4] = manager.getuName();
                             row[5] = manager.getpwd();
-                            ModelNew.addRow(row);
+                            Model.addRow(row);
                         }
                     }
                 }
@@ -597,7 +597,7 @@ public class ManageOrgAdminForEvt extends javax.swing.JPanel {
                             row[3] = manager.getName();
                             row[4] = manager.getuName();
                             row[5] = manager.getpwd();
-                            ModelNew.addRow(row);
+                            Model.addRow(row);
                         }
                     }
                 }

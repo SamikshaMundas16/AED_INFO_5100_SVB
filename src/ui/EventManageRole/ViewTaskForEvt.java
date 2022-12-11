@@ -7,7 +7,7 @@ package ui.EventManageRole;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModelNew;
+import javax.swing.table.DefaultTableModel;
 import ModelNew.Book;
 import ModelNew.BussEvent;
 import ModelNew.CaterService;
@@ -42,7 +42,7 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
         populateComboBox();
         populateTable();
         setBackground(new java.awt.Color(255, 204, 204));
-           backBtn.setBackground(new java.awt.Color(244, 120, 140));
+        backBtn.setBackground(new java.awt.Color(244, 120, 140));
         backBtn.setOpaque(true);
        confirmBtn.setBackground(new java.awt.Color(244, 120, 140));
        confirmBtn.setOpaque(true);
@@ -205,8 +205,8 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Book Book = (Book) ModelNew.getValueAt(selectedRowIndex, 0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Book Book = (Book) Model.getValueAt(selectedRowIndex, 0);
 
         BussEventService eventService = null;
         for (Service service : Book.getServices()) {
@@ -280,8 +280,8 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
             return;
         }
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        Book Book = (Book) ModelNew.getValueAt(selectedRowIndex, 0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Book Book = (Book) Model.getValueAt(selectedRowIndex, 0);
 
         BussEventService eventService = null;
         for (Service service : Book.getServices()) {
@@ -310,8 +310,8 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
 
     private void populateTable() {
 
-        DefaultTableModelNew ModelNew = (DefaultTableModelNew) jTable1.getModelNew();
-        ModelNew.setRowCount(0);
+        DefaultTableModel Model = (DefaultTableModel) jTable1.getModel();
+        Model.setRowCount(0);
 
         CustDirectory CustDirec = systAdmin.getCustDirec(); //get all Custs
         for (Cust Cust : CustDirec.getListOfCust()) {
@@ -342,7 +342,7 @@ public class ViewTaskForEvt extends javax.swing.JPanel {
                                     break;
                             }
                         }
-                        ModelNew.addRow(row);
+                        Model.addRow(row);
                     }
                 }
             }

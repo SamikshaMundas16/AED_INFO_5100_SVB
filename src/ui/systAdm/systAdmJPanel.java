@@ -49,7 +49,7 @@ public class systAdmJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnmanagenetworks = new javax.swing.JButton();
         enterpriseBtn = new javax.swing.JButton();
-        btnmanagecustomers = new javax.swing.JButton();
+        btnmanageCusts = new javax.swing.JButton();
         lblsysadmin = new javax.swing.JLabel();
         btnmanagemanagers = new javax.swing.JButton();
 
@@ -69,11 +69,11 @@ public class systAdmJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnmanagecustomers.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnmanagecustomers.setText("MANAGE CUSTOMERS");
-        btnmanagecustomers.addActionListener(new java.awt.event.ActionListener() {
+        btnmanageCusts.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnmanageCusts.setText("MANAGE CUSTOMERS");
+        btnmanageCusts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmanagecustomersActionPerformed(evt);
+                btnmanageCustsActionPerformed(evt);
             }
         });
 
@@ -103,7 +103,7 @@ public class systAdmJPanel extends javax.swing.JPanel {
                             .addComponent(enterpriseBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                             .addComponent(btnmanagenetworks, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                             .addComponent(btnmanagemanagers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(btnmanagecustomers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnmanageCusts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(303, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -118,7 +118,7 @@ public class systAdmJPanel extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(btnmanagemanagers, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(btnmanagecustomers, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnmanageCusts, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(269, Short.MAX_VALUE))
         );
 
@@ -152,9 +152,9 @@ public class systAdmJPanel extends javax.swing.JPanel {
         callOnCreateMethod2.run();
     }//GEN-LAST:event_enterpriseBtnActionPerformed
 
-    private void btnmanagecustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagecustomersActionPerformed
+    private void btnmanageCustsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanageCustsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnmanagecustomersActionPerformed
+    }//GEN-LAST:event_btnmanageCustsActionPerformed
 
     private void btnmanagemanagersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmanagemanagersActionPerformed
         callOnCreateMethod3.run();
@@ -162,7 +162,7 @@ public class systAdmJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnmanagecustomers;
+    private javax.swing.JButton btnmanageCusts;
     private javax.swing.JButton btnmanagemanagers;
     private javax.swing.JButton btnmanagenetworks;
     private javax.swing.JButton enterpriseBtn;
