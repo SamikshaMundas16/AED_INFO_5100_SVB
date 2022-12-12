@@ -73,8 +73,8 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
         this.systAdmin = DbUtils.getInstance().retrieveSystem();
         logoutBtn.setEnabled(false);
-        ControlPanel.setBackground(new java.awt.Color(244, 120, 140));
-        WorkArea.setBackground(new java.awt.Color(255, 204, 204));
+        ControlPanel.setBackground(new java.awt.Color(0,0, 128);
+        WorkArea.setBackground(new java.awt.Color(0 ,0, 220):
     }
 
     /**
