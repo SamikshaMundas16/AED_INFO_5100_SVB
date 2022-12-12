@@ -28,7 +28,7 @@ public class ManageCustPanel extends javax.swing.JPanel {
         this.systAdmin = systAdmin;
         this.callOnCreateMethod = callOnCreateMethod;
         populateTable();
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(0,0, 128));
         dltBtn.setBackground(new java.awt.Color(244, 120, 140));
         dltBtn.setOpaque(true);
         addButton.setBackground(new java.awt.Color(244, 120, 140));
