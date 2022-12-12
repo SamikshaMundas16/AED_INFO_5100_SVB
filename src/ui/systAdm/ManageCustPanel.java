@@ -359,6 +359,11 @@ public class ManageCustPanel extends javax.swing.JPanel {
             || !Validator.validatepwd(this, pwd)) {
             return;
         }
+        
+        if(contact.length()!=10){
+            JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
+            return;
+        }
 
         if (systAdmin.userExistsInSystem(uName)) {
             JOptionPane.showMessageDialog(this, "uName already exists.");
