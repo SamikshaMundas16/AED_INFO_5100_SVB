@@ -262,8 +262,9 @@ public class MainJFrame extends javax.swing.JFrame {
             pwdField.setText("");
             loginBtn.setEnabled(false);
             logoutBtn.setEnabled(true);
+            JOptionPane.showMessageDialog(this, "Login Successful");
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid uName or pwd");
+            JOptionPane.showMessageDialog(this, "Invalid Username or password");
         }
                                          
                     
