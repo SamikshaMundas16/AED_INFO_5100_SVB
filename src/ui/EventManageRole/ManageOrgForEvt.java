@@ -366,6 +366,11 @@ public class ManageOrgForEvt extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Org name should be at least 2 characters long.");
             return;
         }
+        
+        if(contact.length()!=10){
+            JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
+            return;
+        }
 
         String orgType1 = orgCombo.getSelectedItem().toString();      // org-type (Phy org)
         entDir enterpriseDirc = network.getentDir();
