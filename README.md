@@ -3,5 +3,10 @@
 1) Samiksha Mundas (002776646)
 2) Vatsal Doshi (002776613)
 3) Bhavanish Dhamanaskar (002792028)
+
+Enterprises - Hotel, Restaurant, Health Club and Event Manager
+
+Organisation - Laundary, Transport, Deliveryman, Decoration, Catering, Photography, Physician, Trainer and Therapist
+
+Roles - System Admin
  
-![HMS_Seq drawio](https://user-images.githubusercontent.com/114710277/206960086-61fd3557-8389-484d-9293-b57d43402124.png)
