@@ -428,6 +428,11 @@ public class ManageEntPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Invalid input: Enterprise name should be atleast 2 characters long.");
             return;
         }
+        
+        if(contact.length()!=10){
+            JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
+            return;
+        }
 
         entDir enterpriseDirec = network.getentDir();
         if (enterpriseType1.equals("Health Club") && enterpriseDirec != null) {
