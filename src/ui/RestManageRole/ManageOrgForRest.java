@@ -273,6 +273,11 @@ public class ManageOrgForRest extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Org name should be at least 2 characters long.");
             return;
         }
+        
+        if(contact.length()!=10){
+            JOptionPane.showMessageDialog(this, "Enter Valid 10 digit Phone Number");
+            return;
+        }
 
         List<rest> res = enterpriseDirc.getListOfrests();
         for (int i = 0; i < res.size(); i++) {
